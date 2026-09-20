@@ -7,15 +7,39 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://huyhoang2k5.github.io/solopreneur-kit/tools/vietqr-generator/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://huyhoang2k5.github.io/solopreneur-kit/quiz/</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://huyhoang2k5.github.io/solopreneur-kit/assets/ai_solopreneur_starter_free.pdf</loc>
+    <loc>https://huyhoang2k5.github.io/solopreneur-kit/blog/huong-dan-tao-menu-dien-tu-vietqr.html</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://huyhoang2k5.github.io/solopreneur-kit/blog/giai-phap-nhan-coc-phong-homestay-tu-dong.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://huyhoang2k5.github.io/solopreneur-kit/blog/tich-hop-nut-thanh-toan-vietqr-vao-website.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://huyhoang2k5.github.io/solopreneur-kit/rewards/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>

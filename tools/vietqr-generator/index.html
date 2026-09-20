@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo Mã VietQR Thanh Toán Miễn Phí - Công Cụ Cho Chủ Shop & Freelancer</title>
+  <meta name="description" content="Tạo mã QR thanh toán ngân hàng VietQR Napas247 miễn phí 100%. Hỗ trợ mọi ngân hàng Việt Nam, tải ảnh QR nhanh chóng, nhận tiền trực tiếp không mất phí sàn.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #3b82f6;
+      --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      --accent: #10b981;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem; line-height: 1.6; }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 2.5rem; }
+    .badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 9999px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.75rem; border: 1px solid rgba(59, 130, 246, 0.3); }
+    h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    p.subtitle { color: var(--text-muted); font-size: 1.05rem; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 1.25rem; padding: 1.75rem; backdrop-filter: blur(12px); }
+    .form-group { margin-bottom: 1.25rem; }
+    label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; color: #cbd5e1; }
+    input, select { width: 100%; padding: 0.8rem 1rem; border-radius: 0.75rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--card-border); color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+    input:focus, select:focus { border-color: var(--primary); }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.9rem 1.25rem; border-radius: 0.75rem; font-weight: 700; font-size: 1rem; cursor: pointer; border: none; transition: all 0.2s; }
+    .btn-primary { background: var(--primary-gradient); color: #fff; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.08); color: #fff; margin-top: 0.75rem; }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+
+    .qr-preview { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px; }
+    .qr-wrapper { background: #fff; padding: 1rem; border-radius: 1rem; display: inline-block; box-shadow: 0 10px 25px rgba(0,0,0,0.5); margin-bottom: 1.25rem; }
+    .qr-img { width: 220px; height: 220px; object-fit: contain; display: block; }
+    .qr-details { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .qr-details strong { color: #fff; }
+
+    /* Upsell Banner */
+    .upsell-card { margin-top: 2.5rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.15) 100%); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 1.25rem; padding: 1.75rem; text-align: center; }
+    .upsell-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: #a78bfa; }
+    .upsell-card p { color: #cbd5e1; font-size: 0.95rem; max-width: 650px; margin: 0 auto 1.25rem; }
+    .upsell-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-gradient); color: #fff; padding: 0.8rem 1.75rem; border-radius: 0.75rem; font-weight: 700; text-decoration: none; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4); }
+
+    footer { text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem; }
+    footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">🚀 CÔNG CỤ MIỄN PHÍ 100%</div>
+      <h1>Tạo Mã VietQR Thanh Toán Nhanh</h1>
+      <p class="subtitle">Dành riêng cho chủ shop online, người bán hàng Facebook/TikTok, quán cafe và Freelancer.</p>
+    </header>
+
+    <div class="grid">
+      <!-- Form input -->
+      <div class="card">
+        <h2 style="font-size: 1.2rem; margin-bottom: 1.25rem; color: #fff;">Thông Tin Tài Khoản</h2>
+        <form id="qrForm">
+          <div class="form-group">
+            <label for="bankSelect">Ngân Hàng Nhận Tiền</label>
+            <select id="bankSelect">
+              <option value="TPB" selected>TPBank - Tien Phong Commercial Joint Stock Bank</option>
+              <option value="VCB">Vietcombank - Ngoai Thuong Viet Nam</option>
+              <option value="MB">MBBank - Quan Doi</option>
+              <option value="TCB">Techcombank - Ky Thuong</option>
+              <option value="ACB">ACB - A Chau</option>
+              <option value="VPB">VPBank - Viet Nam Thinh Vuong</option>
+              <option value="BIDV">BIDV - Dau Tu va Phat Trien</option>
+              <option value="CTG">VietinBank - Cong Thuong</option>
+              <option value="STB">Sacombank - Sai Gon Thuong Tin</option>
+              <option value="HDB">HDBank - Phat Trien TP.HCM</option>
+              <option value="SHB">SHB - Sai Gon Ha Noi</option>
+              <option value="MSB">MSB - Hang Hai</option>
+              <option value="OCB">OCB - Phuong Dong</option>
+              <option value="VIB">VIB - Quoc Te</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="accNum">Số Tài Khoản</label>
+            <input type="text" id="accNum" value="20058999999" placeholder="VD: 20058999999" required>
+          </div>
+
+          <div class="form-group">
+            <label for="accName">Tên Chủ Tài Khoản (Không dấu)</label>
+            <input type="text" id="accName" value="LE NGUYEN HOANG HUY" placeholder="VD: NGUYEN VAN A">
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Số Tiền (VNĐ - Tùy chọn)</label>
+            <input type="number" id="amount" placeholder="VD: 199000">
+          </div>
+
+          <div class="form-group">
+            <label for="memo">Nội Dung Chuyển Khoản (Tùy chọn)</label>
+            <input type="text" id="memo" placeholder="VD: DONHANG 1042">
+          </div>
+
+          <button type="button" class="btn btn-primary" onclick="generateQR()">⚡ Cập Nhật Mã QR</button>
+        </form>
+      </div>
+
+      <!-- QR Display -->
+      <div class="card qr-preview">
+        <div class="qr-wrapper">
+          <img id="qrImage" class="qr-img" src="https://img.vietqr.io/image/TPB-20058999999-compact2.png" alt="Mã VietQR">
+        </div>
+        <div class="qr-details" id="qrInfo">
+          Ngân hàng: <strong>TPBank</strong> | STK: <strong>20058999999</strong><br>
+          Chủ TK: <strong>LE NGUYEN HOANG HUY</strong>
+        </div>
+        <button class="btn btn-secondary" onclick="downloadQR()">📥 Tải Ảnh QR Về Máy</button>
+        <button class="btn btn-secondary" onclick="copyPaymentLink()">📋 Sao Chép Link Thanh Toán</button>
+      </div>
+    </div>
+
+    <!-- Upsell Card: Automate webhook / digital menu -->
+    <div class="upsell-card">
+      <div class="badge" style="background: rgba(139, 92, 246, 0.2); color: #c4b5fd; border-color: rgba(139, 92, 246, 0.4);">⚡ NÂNG CẤP TỰ ĐỘNG HÓA DOANH NGHIỆP</div>
+      <h3>Mệt mỏi vì phải kiểm tra ảnh chụp màn hình chuyển khoản thủ công?</h3>
+      <p>Chúng tôi cung cấp gói giải pháp **Webhook Báo Nhận Tiền Tự Động** về Telegram / Google Sheets & **Menu Điện Tử VietQR** trọn gói cho quán cafe, homestay và shop online chỉ từ <strong>199.000 VNĐ</strong> (Phí 1 lần duy nhất, không thuê bao tháng).</p>
+      <a href="https://zalo.me/0848889292?text=Toi%20muon%20tu%20van%20tich%20hop%20VietQR%20tu%20dong%20199k" target="_blank" class="upsell-cta">💬 Nhận Tư Vấn & Cài Đặt Tự Động Qua Zalo</a>
+    </div>
+
+    <footer>
+      <p>© 2026 Solopreneur AI Toolkit • <a href="https://huyhoang2k5.github.io/solopreneur-kit/">Trang Chủ</a> • <a href="https://huyhoang2k5.github.io/vietqr-widget/">VietQR Widget Cho Website</a></p>
+    </footer>
+  </div>
+
+  <script>
+    function generateQR() {
+      const bank = document.getElementById('bankSelect').value;
+      const acc = document.getElementById('accNum').value.trim();
+      const name = encodeURIComponent(document.getElementById('accName').value.trim());
+      const amount = document.getElementById('amount').value.trim();
+      const memo = encodeURIComponent(document.getElementById('memo').value.trim());
+
+      let url = `https://img.vietqr.io/image/${bank}-${acc}-compact2.png`;
+      let params = [];
+      if (amount) params.push(`amount=${amount}`);
+      if (memo) params.push(`addInfo=${memo}`);
+      if (name) params.push(`accountName=${name}`);
+
+      if (params.length > 0) {
+        url += '?' + params.join('&');
+      }
+
+      document.getElementById('qrImage').src = url;
+      document.getElementById('qrInfo').innerHTML = `Ngân hàng: <strong>${bank}</strong> | STK: <strong>${acc}</strong><br>${amount ? 'Số tiền: <strong>' + Number(amount).toLocaleString('vi-VN') + ' VNĐ</strong>' : ''}`;
+    }
+
+    function downloadQR() {
+      const src = document.getElementById('qrImage').src;
+      const a = document.createElement('a');
+      a.href = src;
+      a.download = 'vietqr-payment.png';
+      a.target = '_blank';
+      a.click();
+    }
+
+    function copyPaymentLink() {
+      const src = document.getElementById('qrImage').src;
+      navigator.clipboard.writeText(src).then(() => {
+        alert('Đã sao chép link ảnh QR vào clipboard!');
+      });
+    }
+  </script>
+</body>
+</html>
