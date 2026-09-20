@@ -60,3 +60,14 @@ Bạn có thể quét mã QR ngân hàng hoặc chuyển khoản trực tiếp:
 
 ## 📜 Giấy Phép & Bản Quyền
 Dự án được phân phối dưới giấy phép MIT License. Bạn có thể tự do học tập và áp dụng vào công việc kinh doanh của mình!
+
+---
+
+## 💳 Mua Trọn Bộ Kit & Tài Trợ (Sponsor & Instant Checkout)
+
+Nếu bộ công cụ tự động hóa này giúp bạn tiết kiệm thời gian vận hành hoặc tối ưu hóa kinh doanh:
+- **Ủng hộ / Mua qua PayPal**: [paypal.me/lnhhoang2k5](https://paypal.me/lnhhoang2k5) (Email: `lnhhoang2k5@gmail.com`)
+- **Chuyển khoản VietQR (TPBank)**:
+  - Số tài khoản: **20058999999**
+  - Tên chủ tài khoản: **LE NGUYEN HUY HOANG**
+  - Quét mã nhanh: [VietQR Image](https://img.vietqr.io/image/970423-20058999999-compact2.png)
