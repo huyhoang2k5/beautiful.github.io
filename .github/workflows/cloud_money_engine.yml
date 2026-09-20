@@ -1,0 +1,30 @@
+name: Cloud Autonomous Money Engine (24/7 Zero-Capital)
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Automatically runs every 30 minutes in the cloud 24/7
+  workflow_dispatch:        # Can be triggered manually anytime from GitHub UI
+  push:
+    branches: [ main ]
+
+jobs:
+  run-autonomous-engine:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Execute Cloud Autonomous Money Engine
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/cloud_engine.py
