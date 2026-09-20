@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trắc Nghiệm Tư Duy Tài Chính AI 2026 | Khám Phá Archetype Của Bạn</title>
+  <meta name="description" content="Khám phá bạn thuộc nhóm tính cách kiếm tiền nào trong kỷ nguyên AI: The Innovator, The Strategist, The Creator hay The Hustler? 60 giây trắc nghiệm miễn phí!">
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://huyhoang2k5.github.io/solopreneur-kit/quiz/">
+  <meta property="og:title" content="Trắc Nghiệm Tư Duy Tài Chính AI 2026 | Khám Phá Archetype Của Bạn">
+  <meta property="og:description" content="Bạn thuộc nhóm 1% tư duy kiếm tiền nào trong kỷ nguyên AI? Thử ngay trắc nghiệm 60s và nhận thẻ phân tích cá nhân!">
+  <meta property="og:image" content="https://huyhoang2k5.github.io/solopreneur-kit/assets/preview_banner.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <!-- Quiz Header -->
+    <header class="quiz-header">
+      <a href="../" class="back-link">← Về trang chủ Solopreneur OS</a>
+      <div class="badge">🎮 MINI-GAME GIẢI TRÍ & TRẮC NGHIỆM AI 2026</div>
+      <h1>Bạn Thuộc Nhóm <span class="gradient-text">Tư Duy Kiếm Tiền</span> Nào Trong Kỷ Nguyên AI?</h1>
+      <p class="subtitle">Chỉ mất 60 giây để khám phá thế mạnh tiềm ẩn và nhận thẻ kết quả cá nhân hóa để chia sẻ!</p>
+    </header>
+
+    <!-- Quiz Card Screen -->
+    <main class="quiz-card" id="quiz-screen">
+      <!-- Progress bar -->
+      <div class="progress-bar-container">
+        <div class="progress-info">
+          <span id="question-counter">Câu hỏi 1 / 7</span>
+          <span id="progress-percent">14%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill" style="width: 14%;"></div>
+        </div>
+      </div>
+
+      <!-- Question Box -->
+      <div class="question-box">
+        <h2 id="question-text">Đang tải câu hỏi...</h2>
+        <div class="options-grid" id="options-grid">
+          <!-- Options injected by JS -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Result Screen (Hidden by default) -->
+    <section class="result-card hidden" id="result-screen">
+      <div class="result-badge" id="result-badge">⚡ KẾT QUẢ CỦA BẠN</div>
+      <h2 class="result-title" id="result-title">Archetype Title</h2>
+      <p class="result-tagline" id="result-tagline">Tagline</p>
+
+      <!-- Canvas for Shareable Image -->
+      <div class="canvas-wrapper">
+        <canvas id="result-canvas" width="600" height="600"></canvas>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn btn-secondary" onclick="downloadResultImage()">
+          📥 Tải Ảnh Thẻ Kết Quả (Chia sẻ lên Threads/Zalo)
+        </button>
+        <button class="btn btn-restart" onclick="restartQuiz()">
+          🔄 Làm Lại Trắc Nghiệm
+        </button>
+      </div>
+
+      <!-- Premium Upsell Funnel (VietQR 19k) -->
+      <div class="upsell-box">
+        <div class="upsell-tag">🔥 ĐẶC QUYỀN MỞ KHÓA BÁO CÁO CHUYÊN SÂU</div>
+        <h3>Báo Cáo Lộ Trình Kiếm Tiền 0đ Dành Riêng Cho Bạn</h3>
+        <p>Nhận ngay bản phân tích 5 trang chi tiết: 3 mô hình kinh doanh phù hợp nhất với nhóm tính cách của bạn + 20 Mega-Prompts AI chuyên biệt.</p>
+        <div class="upsell-price">
+          <span class="old-price">99.000 VNĐ</span>
+          <span class="new-price">19.000 VNĐ</span>
+          <span class="discount-badge">Ủng hộ 1 ly cafe</span>
+        </div>
+        <button class="btn btn-primary btn-lg" onclick="openQuizCheckout()">
+          ⚡ Quét VietQR Mở Khóa Báo Cáo Ngay (19.000đ)
+        </button>
+      </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay hidden" id="checkout-modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeQuizCheckout()">✕</button>
+        <h3>Quét VietQR Mở Khóa Báo Cáo Chuyên Sâu</h3>
+        <p class="modal-desc">Mở ứng dụng ngân hàng bất kỳ để quét mã Napas247:</p>
+        
+        <div class="qr-box">
+          <img id="quiz-qr-image" src="" alt="VietQR TPBank" />
+        </div>
+
+        <div class="bank-details">
+          <div><strong>Ngân hàng:</strong> TPBank (Tiên Phong Bank)</div>
+          <div><strong>Số tài khoản:</strong> <span class="highlight">20058999999</span></div>
+          <div><strong>Số tiền:</strong> <span class="highlight">19.000 VNĐ</span></div>
+          <div><strong>Nội dung CK:</strong> <span class="highlight" id="quiz-memo">QUIZ_1234</span></div>
+        </div>
+
+        <div class="verify-box">
+          <input type="text" id="quiz-tx-code" placeholder="Nhập Mã giao dịch ngân hàng sau khi chuyển..." />
+          <button class="btn btn-primary" onclick="verifyQuizPayment()">Xác Nhận & Tải Báo Cáo</button>
+        </div>
+        <p class="modal-note">Hệ thống ghi nhận giao dịch tự động 24/7 không cần chờ duyệt thủ công.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
