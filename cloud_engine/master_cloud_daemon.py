@@ -43,19 +43,20 @@ def get_github_token():
 def check_bounty_payouts(headers, ledger):
     print("\n[CLOUD DAEMON] 1. Kiểm tra đối soát giải ngân tự động trên các nền tảng...")
     
-    # Check MergeEarn PR 45
-    try:
-        url = 'https://api.github.com/repos/Saidur-droid/MergeEarn/pulls/45'
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            data = json.loads(resp.read().decode())
-            is_merged = data.get('merged', False)
-            print(f"  * Saidur-droid/MergeEarn PR #45: State={data.get('state')}, Merged={is_merged}")
-            if is_merged:
-                print("    🎉 PR #45 ĐÃ ĐƯỢC MERGE! KÍCH HOẠT PHÂN PHỐI 20 NIM!")
-                ledger['actual_revenue']['NIM'] = max(ledger['actual_revenue'].get('NIM', 0), 20)
-    except Exception as e:
-        print("    Lỗi kiểm tra MergeEarn:", e)
+    # Check MergeEarn PR 43 & 45
+    for pr_id in [43, 45]:
+        try:
+            url = f'https://api.github.com/repos/Saidur-droid/MergeEarn/pulls/{pr_id}'
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode())
+                is_merged = data.get('merged', False)
+                print(f"  * Saidur-droid/MergeEarn PR #{pr_id}: State={data.get('state')}, Merged={is_merged}")
+                if is_merged:
+                    print(f"    🎉 PR #{pr_id} ĐÃ ĐƯỢC MERGE! KÍCH HOẠT PHÂN PHỐI NIM!")
+                    ledger['actual_revenue']['NIM'] = max(ledger.get('actual_revenue', {}).get('NIM', 0), 20)
+        except Exception as e:
+            print(f"    Lỗi kiểm tra MergeEarn PR #{pr_id}:", e)
 
     # Check RustChain PR 16999 & Issue 16997
     try:
@@ -68,8 +69,21 @@ def check_bounty_payouts(headers, ledger):
     except Exception as e:
         print("    Lỗi kiểm tra RustChain PR 16999:", e)
 
-    # Check RustChain claims
-    issues = [1524, 1098, 1577, 1579, 14476, 16998, 16863]
+    # Check RustChain main issue #302 (Blog post)
+    try:
+        url = 'https://api.github.com/repos/Scottcjn/Rustchain/issues/302/comments?per_page=3&sort=created&direction=desc'
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            comments = json.loads(resp.read().decode())
+            for c in comments:
+                body = c.get('body', '').lower()
+                if any(w in body for w in ['approved', 'payout', 'sent', 'paid', 'merged', 'reward sent']):
+                    print(f"    ⭐ Thông báo thanh toán/phê duyệt phát hiện tại Rustchain #302 bởi {c['user']['login']}: {c['body'][:100]}...")
+    except Exception:
+        pass
+
+    # Check RustChain bounty issues
+    issues = [1524, 1098, 1577, 1579, 14476, 16998, 16863, 478]
     for iss in issues:
         try:
             url = f'https://api.github.com/repos/Scottcjn/rustchain-bounties/issues/{iss}/comments?per_page=3&sort=created&direction=desc'
