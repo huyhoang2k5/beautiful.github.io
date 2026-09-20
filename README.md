@@ -71,5 +71,5 @@ Nếu bộ công cụ tự động hóa này giúp bạn tiết kiệm thời gi
 - **Ví Native RTC (RustChain)**: `RTC03434fcb69e1097d553150af5976ef8e4ddf7c41`
 - **Chuyển khoản VietQR (TPBank)**:
   - Số tài khoản: **20058999999**
-  - Tên chủ tài khoản: **LE NGUYEN HOANG HUY**
+  - Tên chủ tài khoản: **LE NGUYEN HUY HOANG**
   - Quét mã nhanh: [VietQR Image](https://img.vietqr.io/image/970423-20058999999-compact2.png)
