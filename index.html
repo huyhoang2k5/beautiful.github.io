@@ -190,26 +190,33 @@
       <button class="modal-close" onclick="closeCheckoutModal()">&times;</button>
       
       <div id="freeDownloadView" style="display: none;">
-        <h3>🎉 Cảm Ơn Bạn Đã Quan Tâm!</h3>
-        <p>Bản tóm tắt cơ bản của bạn đã sẵn sàng. Nhấp vào nút bên dưới để tải về ngay:</p>
+        <h3>🎉 Bản Tóm Tắt Miễn Phí (Starter Kit)</h3>
+        <p>Bản tóm tắt 15 Prompts cốt lõi & Chiến lược 0đ của bạn đã sẵn sàng:</p>
         <div class="download-box">
-          <a href="assets/ai_solopreneur_toolkit_2026.pdf" download="Cẩm_Nang_Solopreneur_AI_2026.pdf" class="btn btn-primary btn-block">
-            📥 Tải Ngay Bộ Toolkit (Bản PDF Đầy Đủ)
+          <a href="assets/ai_solopreneur_starter_free.pdf" download="Solopreneur_AI_Starter_Free.pdf" class="btn btn-primary btn-block">
+            📥 Tải Bản Tóm Tắt (Miễn Phí 0 VNĐ)
           </a>
         </div>
-        <p class="small-text mt-3">Nếu thấy hữu ích, bạn luôn có thể quay lại ủng hộ tác giả 1 ly cà phê bất cứ lúc nào!</p>
+        <p class="small-text mt-3">Muốn nhận trọn bộ 100+ Prompt và 20 kịch bản video viral? Bạn có thể ủng hộ tác giả 1 ly cà phê để nâng cấp bất cứ lúc nào!</p>
       </div>
 
       <div id="paidQrView" style="display: none;">
-        <h3>☕ Ủng Hộ Tác Giả & Tải Trọn Bộ</h3>
-        <p>Quét mã VietQR bằng bất kỳ app ngân hàng nào (Napas247 - Miễn phí chuyển khoản 24/7):</p>
+        <h3>☕ Ủng Hộ Tác Giả & Tải Bản Full Premium</h3>
+        <p>Quét mã VietQR bằng bất kỳ app ngân hàng nào (Napas247 - Miễn phí 24/7):</p>
         
         <div class="qr-container">
-          <!-- VietQR Dynamic Image: Tự động cấu hình TPBank - 20058999999 -->
           <img id="vietQrImg" src="https://img.vietqr.io/image/970423-20058999999-compact2.png?amount=29000&addInfo=SOLO2026" alt="VietQR Thanh Toan TPBank" class="qr-image">
         </div>
 
         <div class="payment-details">
+          <div class="detail-row">
+            <span>Ngân hàng:</span>
+            <strong>TPBank (Tiên Phong)</strong>
+          </div>
+          <div class="detail-row">
+            <span>Số tài khoản:</span>
+            <strong>20058999999</strong>
+          </div>
           <div class="detail-row">
             <span>Số tiền:</span>
             <strong id="modalAmountText">29.000 VNĐ</strong>
@@ -220,12 +227,29 @@
           </div>
         </div>
 
-        <div class="qr-actions">
-          <a href="assets/ai_solopreneur_toolkit_2026.pdf" download="Cẩm_Nang_Solopreneur_AI_2026.pdf" class="btn btn-primary btn-block">
-            ✅ Đã Chuyển Khoản -> Tải Trọn Bộ (PDF)
-          </a>
-          <button class="btn btn-secondary btn-block mt-2" onclick="openFreeView()">
-            Tôi Muốn Tải Bản Miễn Phí Trước
+        <!-- Khung xác minh thanh toán bảo vệ bản quyền -->
+        <div class="verification-box">
+          <p class="verify-instruction">Sau khi chuyển khoản, vui lòng nhập thông tin để hệ thống kiểm duyệt và mở khóa tải bản Full:</p>
+          <div class="form-group">
+            <input type="text" id="custContact" placeholder="Email hoặc Số điện thoại / Zalo của bạn" class="input-field">
+          </div>
+          <div class="form-group mt-2">
+            <input type="text" id="transCode" placeholder="Mã giao dịch / Mã tham chiếu trên App ngân hàng" class="input-field">
+          </div>
+          <button id="btnVerify" class="btn btn-primary btn-block mt-2" onclick="verifyPayment()">
+            🔍 Xác Nhận Đã Chuyển Khoản & Mở Khóa
+          </button>
+          <div id="verifyResult" class="verify-result mt-2" style="display: none;"></div>
+          <div id="unlockedDownload" class="mt-2" style="display: none;">
+            <a href="assets/ai_solopreneur_full_premium.pdf" download="Cam_Nang_Solopreneur_AI_2026_Full.pdf" class="btn btn-primary btn-block">
+              🎉 Tải Bản Full Premium (PDF)
+            </a>
+          </div>
+        </div>
+
+        <div class="qr-actions mt-3">
+          <button class="btn btn-secondary btn-block" onclick="openFreeView()">
+            Tôi Muốn Tải Bản Miễn Phí Trước (0 VNĐ)
           </button>
         </div>
       </div>
