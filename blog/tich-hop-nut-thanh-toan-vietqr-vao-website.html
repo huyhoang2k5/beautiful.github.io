@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hướng Dẫn Tích Hợp Nút Thanh Toán & Donate VietQR Cho Mọi Website (Chỉ 1 Dòng Mã) | AI Solopreneur OS</title>
+  <meta name="description" content="Cách thêm nút thanh toán, ủng hộ VietQR Napas247 vào website bán hàng, landing page hoặc blog cá nhân chỉ bằng 1 dòng script duy nhất. Hoàn toàn miễn phí.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background: #0f172a; color: #f8fafc; line-height: 1.7; padding: 30px 20px 80px; }
+    .container { max-width: 720px; margin: 0 auto; }
+    .meta { font-size: 0.85rem; color: #4ade80; margin-bottom: 12px; font-weight: 700; }
+    h1 { font-size: 2rem; font-weight: 800; line-height: 1.3; margin-bottom: 20px; color: #f8fafc; }
+    h2 { font-size: 1.35rem; font-weight: 700; margin: 30px 0 14px; color: #4ade80; border-left: 4px solid #4ade80; padding-left: 12px; }
+    p { margin-bottom: 16px; color: #cbd5e1; font-size: 0.95rem; }
+    pre { background: #1e293b; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; overflow-x: auto; font-family: monospace; font-size: 0.9rem; color: #38bdf8; margin: 20px 0; }
+    .highlight-box { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(74, 222, 128, 0.3); border-radius: 14px; padding: 20px; margin: 24px 0; }
+    .cta-card { background: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(34, 197, 94, 0.15)); border: 1px solid #4ade80; border-radius: 16px; padding: 24px; text-align: center; margin: 36px 0; }
+    .cta-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
+    .btn { display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, #16a34a, #15803d); color: white; text-decoration: none; font-weight: 700; border-radius: 12px; margin-top: 14px; transition: 0.2s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(74, 222, 128, 0.4); }
+    footer { text-align: center; margin-top: 50px; font-size: 0.8rem; color: #64748b; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="meta">LẬP TRÌNH & THƯƠNG MẠI ĐIỆN TỬ · CẬP NHẬT 2026</div>
+    <h1>Hướng Dẫn Tích Hợp Nút Thanh Toán & Donate VietQR Vào Mọi Website (Chỉ 1 Dòng Mã)</h1>
+
+    <p>Nếu bạn sở hữu một website bán hàng, một trang landing page giới thiệu sản phẩm số hoặc một blog cá nhân, việc tích hợp cổng thanh toán trực tuyến truyền thống thường rất rắc rối: phải đăng ký pháp nhân doanh nghiệp, ký hợp đồng với ngân hàng và chịu phí giao dịch từ 1.5% - 3%.</p>
+
+    <p>Với công cụ <strong>VietQR Widget Embed</strong>, bạn có thể thêm một nút nổi nhận tiền hoặc donate chuẩn Napas247 vào bất kỳ trang web nào chỉ trong chưa đầy 30 giây.</p>
+
+    <h2>1. Mã nhúng trực tiếp (Chỉ 1 dòng script duy nhất)</h2>
+    <p>Chỉ cần dán đoạn mã sau vào trước thẻ đóng <code>&lt;/body&gt;</code> trên trang web của bạn:</p>
+
+    <pre>&lt;script src="https://huyhoang2k5.github.io/vietqr-widget/embed.js" 
+  data-bank="tpbank" 
+  data-account="20058999999" 
+  data-amount="50000" 
+  data-memo="DONATE"&gt;&lt;/script&gt;</pre>
+
+    <h2>2. Các tham số tùy chỉnh</h2>
+    <ul>
+      <li><code>data-bank</code>: Mã ngân hàng (ví dụ: <code>tpbank</code>, <code>vietcombank</code>, <code>mbbank</code>, <code>techcombank</code>...).</li>
+      <li><code>data-account</code>: Số tài khoản nhận tiền chính chủ của bạn.</li>
+      <li><code>data-amount</code>: Số tiền mặc định (VNĐ) hoặc để trống nếu muốn khách tự nhập.</li>
+      <li><code>data-memo</code>: Nội dung chuyển khoản mặc định.</li>
+    </ul>
+
+    <div class="highlight-box">
+      <strong>⚡ Ưu điểm vượt trội:</strong>
+      <ul>
+        <li>Tiền chuyển khoản chạy thẳng về tài khoản ngân hàng của bạn ngay lập tức, không qua trung gian.</li>
+        <li>0đ chi phí duy trì hoặc phí phần trăm giao dịch.</li>
+        <li>Hỗ trợ quét trên toàn bộ các ứng dụng ngân hàng tại Việt Nam và ví điện tử Momo.</li>
+      </ul>
+    </div>
+
+    <div class="cta-card">
+      <h3>Khám Phá Toàn Bộ Mã Nguồn Mở & Tiện Ích Mở Rộng</h3>
+      <p>Xem toàn bộ tài liệu hướng dẫn và mã nguồn mở của VietQR Widget tại GitHub:</p>
+      <a href="https://github.com/huyhoang2k5/vietqr-widget" class="btn" target="_blank">Xem Mã Nguồn Trên GitHub</a>
+    </div>
+
+    <footer>
+      © 2026 AI Solopreneur OS · Giải pháp số hóa kinh doanh 0đ vốn.
+    </footer>
+  </div>
+</body>
+</html>
