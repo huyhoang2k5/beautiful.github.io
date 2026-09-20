@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://huyhoang2k5.github.io/solopreneur-kit/sitemap.xml
