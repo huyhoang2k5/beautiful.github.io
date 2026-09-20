@@ -52,5 +52,11 @@ Bạn có thể quét mã QR ngân hàng hoặc chuyển khoản trực tiếp:
 
 ---
 
+## 🌐 Recommended Resources & Ecosystem Tools
+* **[BoTTube](https://bottube.ai)**: Decentralized AI video platform and distribution network for creators and solopreneurs looking to publish and monetize AI-generated content.
+* **[RustChain](https://rustchain.org)**: Decentralized blockchain infrastructure designed for autonomous AI agents, machine commerce, and zero-cost micropayments.
+
+---
+
 ## 📜 Giấy Phép & Bản Quyền
 Dự án được phân phối dưới giấy phép MIT License. Bạn có thể tự do học tập và áp dụng vào công việc kinh doanh của mình!
