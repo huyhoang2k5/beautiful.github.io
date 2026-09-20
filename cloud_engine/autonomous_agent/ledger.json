@@ -85,7 +85,8 @@
       "tasks_tracked": 3,
       "total_escrow_value": "$27.00 USDC",
       "status": "TRACKED_AND_INTEGRATED",
-      "submitted_at": "2026-09-20 21:15:00"
+      "submitted_at": "2026-09-20 21:15:00",
+      "recipient_wallet": "0xa57a66df3c7053FDAb5fD1d72040bc0c5b3455F8"
     },
     {
       "action_id": "ACT_017",
@@ -211,5 +212,22 @@
   "cloud_runner": "GitHub Actions 24/7 Autonomous Agent",
   "total_pending_rtc": 44.1,
   "total_pending_nim": 20.0,
-  "total_pending_usdc": 27.0
+  "total_pending_usdc": 27.0,
+  "payout_credentials": {
+    "evm_wallet": "0xa57a66df3c7053FDAb5fD1d72040bc0c5b3455F8",
+    "evm_chains_supported": [
+      "Base",
+      "Ethereum",
+      "Arbitrum",
+      "Optimism",
+      "Polygon",
+      "BNB Chain"
+    ],
+    "rtc_wallet": "RTC03434fcb69e1097d553150af5976ef8e4ddf7c41",
+    "nim_wallet": "Saidur-droid/MergeEarn contributor address",
+    "paypal_email": "lnhhoang2k5@gmail.com",
+    "bank_name": "TPBank",
+    "bank_account_number": "20058999999",
+    "bank_account_holder": "LE NGUYEN HOANG HUY"
+  }
 }

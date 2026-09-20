@@ -67,7 +67,9 @@ Dự án được phân phối dưới giấy phép MIT License. Bạn có thể
 
 Nếu bộ công cụ tự động hóa này giúp bạn tiết kiệm thời gian vận hành hoặc tối ưu hóa kinh doanh:
 - **Ủng hộ / Mua qua PayPal**: [paypal.me/lnhhoang2k5](https://paypal.me/lnhhoang2k5) (Email: `lnhhoang2k5@gmail.com`)
+- **Ví Web3 / Crypto (Base, ETH, BSC, Polygon, Arbitrum)**: `0xa57a66df3c7053FDAb5fD1d72040bc0c5b3455F8`
+- **Ví Native RTC (RustChain)**: `RTC03434fcb69e1097d553150af5976ef8e4ddf7c41`
 - **Chuyển khoản VietQR (TPBank)**:
   - Số tài khoản: **20058999999**
-  - Tên chủ tài khoản: **LE NGUYEN HUY HOANG**
+  - Tên chủ tài khoản: **LE NGUYEN HOANG HUY**
   - Quét mã nhanh: [VietQR Image](https://img.vietqr.io/image/970423-20058999999-compact2.png)
