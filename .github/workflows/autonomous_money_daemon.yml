@@ -1,0 +1,49 @@
+name: 24/7 Autonomous Money-Seeking Cloud Agent
+
+on:
+  schedule:
+    # Runs every 30 minutes 24/7 in GitHub's cloud (0 VNĐ cost)
+    - cron: '*/30 * * * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+  push:
+    branches:
+      - main
+    paths:
+      - 'cloud_engine/**'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  hunt-revenue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Cloud Dependencies
+        run: |
+          pip install requests cryptography
+
+      - name: Execute Master Cloud Daemon
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python cloud_engine/master_cloud_daemon.py
+
+      - name: Commit and Push Updated Ledger & State
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add cloud_engine/autonomous_agent/ledger.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(cloud): sync autonomous ledger state [skip ci]" && git push origin main)

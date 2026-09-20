@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-09-20 22:18:14",
+  "international": [
+    {
+      "platform": "Reddit (r/SideProject, r/webdev)",
+      "target": "Global Developers & Indie Hackers",
+      "title": "I built a lightweight 0-dependency QR Payment Widget for web apps (100% Free & Open Source)",
+      "link": "https://github.com/huyhoang2k5/vietqr-widget",
+      "demo": "https://huyhoang2k5.github.io/vietqr-widget/"
+    },
+    {
+      "platform": "Twitter / X",
+      "target": "Tech Twitter & Solopreneurs",
+      "hook": "How to build & monetize an open-source tool with $0 server cost in 2026: 🧵👇",
+      "link": "https://huyhoang2k5.github.io/vietqr-widget/"
+    }
+  ],
+  "domestic": [
+    {
+      "group": "Hội Chủ Quán Cafe, Trà Sữa & Nhà Hàng Toàn Quốc",
+      "topic": "Menu Điện Tử & VietQR Tại Bàn",
+      "hook": "Tặng các chủ quán bộ mẫu Menu Điện Tử VietQR tại bàn không mất phí sàn",
+      "cta_link": "https://huyhoang2k5.github.io/solopreneur-kit/blog/huong-dan-tao-menu-dien-tu-vietqr.html"
+    },
+    {
+      "group": "Cộng Đồng Homestay & Du Lịch Tự Túc",
+      "topic": "Giải Pháp Nhận Cọc Giữ Phòng Tự Động",
+      "hook": "Cách homestay nhận cọc 200k tự động tránh bùng phòng & né phí 15% của OTA",
+      "cta_link": "https://huyhoang2k5.github.io/solopreneur-kit/blog/giai-phap-nhan-coc-phong-homestay-tu-dong.html"
+    },
+    {
+      "group": "Cộng Đồng Người Bán Hàng Online & Freelancer",
+      "topic": "Công Cụ Tạo Mã VietQR Miễn Phí",
+      "hook": "Công cụ tạo mã QR chuyển khoản Napas247 miễn phí, tải ảnh PNG trong 3 giây",
+      "cta_link": "https://huyhoang2k5.github.io/solopreneur-kit/tools/vietqr-generator/"
+    }
+  ],
+  "active_bounties_summary": {
+    "base_usdc": "3 tasks ($27.00 USDC) on Jobs for AI Agents",
+    "nimiq": "20 NIM on MergeEarn PR #45",
+    "rustchain": "8.1 RTC on RustChain Bounties",
+    "b2b_pipeline": "12 leads (2.888.000 VNĐ) on Solopreneur Kit"
+  }
+}

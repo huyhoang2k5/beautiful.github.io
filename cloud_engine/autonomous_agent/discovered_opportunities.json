@@ -1,0 +1,123 @@
+{
+  "last_scan": "2026-09-20 16:13:23",
+  "total_found": 13,
+  "code_bounties": [
+    {
+      "type": "CODE_BOUNTY",
+      "title": "[Bounty] [Bounty: ] Race Condition in Distributed Async Event Queue during High Concurren",
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/1217",
+      "comments": 2,
+      "created_at": "2026-09-08T13:54:29Z",
+      "body_snippet": "### 赏金平台 / Platform\nGitHub\n\n### 原始链接 / Source URL\nhttps://github.com/Senthemodder/claude-honeypot/issues/1\n\n### 漏洞描述 / Description\n[Bounty: ] Race Condition in Distributed Async Event Queue during High Concurrency\n\n# [Bounty: $250] Race Condition in Distributed Async Event Queue during High Concurre"
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "[Bounty] Fail-closed Victory Audit on planted auth_bypass",
+      "repo": "s6pa1rta3n-lab/universal_bounty_fleet",
+      "url": "https://github.com/s6pa1rta3n-lab/universal_bounty_fleet/issues/1",
+      "comments": 6,
+      "created_at": "2026-08-28T02:24:38Z",
+      "body_snippet": "## GrantFox OSS bounty\n**Reward:** $1,200.00 USDC\n**Escrow:** GrantFox smart-contract escrow confirmed and locked by grantfox-bot.\n**Platform:** GrantFox (not Algora / Polar / Opire).\n**Repo:** `s6pa1rta3n-lab/universal_bounty_fleet`\n\nThis is a controlled judging rehearsal. We hold merge approval so"
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "Bug: Refresh endpoint mints tokens without validating a refresh token",
+      "repo": "SecureBananaLabs/bug-bounty",
+      "url": "https://github.com/SecureBananaLabs/bug-bounty/issues/1750",
+      "comments": 8,
+      "created_at": "2026-05-30T01:59:14Z",
+      "body_snippet": "### Bug Description\n`POST /api/auth/refresh` currently ignores the request body and calls `refreshToken()` without validating any supplied refresh token. The service then returns a new access token for the hard-coded `usr_existing` user, so an unauthenticated caller can mint a fresh client token wit"
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "Add support for multiple networks (Testnet/Mainnet switch)",
+      "repo": "sorosave-protocol/frontend",
+      "url": "https://github.com/sorosave-protocol/frontend/issues/80",
+      "comments": 8,
+      "created_at": "2026-02-23T22:17:15Z",
+      "body_snippet": "Allow users to switch between Stellar Testnet and Mainnet from the UI.\n\n**Acceptance Criteria:**\n- Add network selector dropdown in Navbar\n- Update RPC URL and contract ID based on selected network\n- Persist selection in localStorage\n- Show confirmation dialog when switching networks\n- Clear cached "
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "Add group analytics with charts and graphs",
+      "repo": "sorosave-protocol/frontend",
+      "url": "https://github.com/sorosave-protocol/frontend/issues/69",
+      "comments": 6,
+      "created_at": "2026-02-23T22:16:07Z",
+      "body_snippet": "Create visual analytics for group contribution and payout history.\n\n**Acceptance Criteria:**\n- Add chart library (recharts or chart.js)\n- Contribution amount over time line chart\n- Payout distribution bar chart\n- Member participation pie chart\n- Responsive charts that work on mobile\n\n**Files:** new "
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "Most HTML-scraping connectors bypass stealth entirely — standardise on ox-browser POST /fetch",
+      "repo": "anatolykoptev/go-job",
+      "url": "https://github.com/anatolykoptev/go-job/issues/348",
+      "comments": 3,
+      "created_at": "2026-07-29T04:12:56Z",
+      "body_snippet": "Most job connectors scrape HTML from consumer sites with a bare `net/http` client — Go's TLS fingerprint, a Go User-Agent, and a datacenter IP. Only five of them use any anti-bot transport at all.\n\nMeasured on `main`, counting transport references per file in `internal/engine/jobs/`:\n\n| connector | "
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "Improve public bounty card accessibility labels",
+      "repo": "Saidur-droid/MergeEarn",
+      "url": "https://github.com/Saidur-droid/MergeEarn/issues/28",
+      "comments": 0,
+      "created_at": "2026-09-20T08:05:44Z",
+      "body_snippet": "## Goal\nMake bounty status, lifecycle progress, reward, and proof actions clearer to assistive technology.\n\n## Acceptance criteria\n- Add useful accessible labels/descriptions to public bounty cards and proof actions.\n- Avoid duplicate noisy announcements.\n- Preserve all visual content and workflow b"
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "Add transaction-proof copy action for confirmed Nimiq links",
+      "repo": "Saidur-droid/MergeEarn",
+      "url": "https://github.com/Saidur-droid/MergeEarn/issues/27",
+      "comments": 0,
+      "created_at": "2026-09-20T08:05:40Z",
+      "body_snippet": "## Goal\nMake confirmed funding and payout proof easier to reference in reviews or community posts.\n\n## Acceptance criteria\n- For confirmed funding/payout transaction links, add a small copy action for the explorer URL.\n- Never expose a pending or unverified transaction as confirmed proof.\n- Reuse sa"
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "Add a compact contributor onboarding note to funded bounty cards",
+      "repo": "Saidur-droid/MergeEarn",
+      "url": "https://github.com/Saidur-droid/MergeEarn/issues/26",
+      "comments": 0,
+      "created_at": "2026-09-20T08:05:36Z",
+      "body_snippet": "## Goal\nHelp a first-time developer understand the next step on an actionable funded bounty.\n\n## Acceptance criteria\n- FUNDED cards show a short contributor hint such as claim → fix → PR → verified payout.\n- Keep it compact and no-login readable.\n- Do not imply payment is guaranteed before merge/app"
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "CLAIM YOUR REWARD HERE",
+      "repo": "OmniBlocks/bountyfarmer",
+      "url": "https://github.com/OmniBlocks/bountyfarmer/issues/35",
+      "comments": 4,
+      "created_at": "2026-09-18T13:23:10Z",
+      "body_snippet": "be completing a bounty in this repo, u wil gain a rewardzz!! go to https://reward.hermits.cc for more info"
+    },
+    {
+      "type": "CODE_BOUNTY",
+      "title": "help wanted: edit a professional MARM Console demo video",
+      "repo": "Lyellr88/marm-memory",
+      "url": "https://github.com/Lyellr88/marm-memory/issues/199",
+      "comments": 3,
+      "created_at": "2026-09-16T07:17:32Z",
+      "body_snippet": "## Summary\n\nWe are looking for a contributor to record and edit a short, professional MARM Console demo video. The contributor should capture the footage from the supplied demo environment, then deliver the completed edit and editable project files.\n\nMARM Console is the local web interface for memor"
+    }
+  ],
+  "data_products": [
+    {
+      "type": "DATA_PRODUCT",
+      "title": "Báo cáo dữ liệu: Top 500 Công cụ AI phát triển nhanh nhất 2026 (Kèm API & Pricing)",
+      "monetization": "Đóng gói dataset JSON/CSV đưa lên HuggingFace / Gumroad / GitHub Sponsors",
+      "cost": 0,
+      "automation_level": "100% AI",
+      "potential_revenue": "$20 - $100 / sale"
+    },
+    {
+      "type": "FREE_MICRO_TOOL",
+      "title": "VietQR Quick Link Generator API & Web Tool",
+      "monetization": "Embed affiliate links (Hosting, Domain, SaaS) + BuyMeACoffee/VietQR",
+      "cost": 0,
+      "automation_level": "100% AI",
+      "potential_revenue": "Thụ động từ traffic & donations"
+    }
+  ]
+}
