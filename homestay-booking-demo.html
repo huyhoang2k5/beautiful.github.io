@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mây Lang Thang Homestay Đà Lạt | Hệ Thống Đặt Phòng & Nhận Cọc Tự Động</title>
+  <meta name="description" content="Demo hệ thống đặt phòng và tự động nhận cọc VietQR Napas 24/7 dành riêng cho chủ Homestay, Khách sạn, Villa. Không mất phí hoa hồng OTA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --primary: #f59e0b;
+      --primary-hover: #d97706;
+      --accent: #10b981;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 60px; }
+    
+    .container { max-width: 600px; margin: 0 auto; padding: 0 16px; }
+
+    /* Top banner */
+    .top-notice {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(16, 185, 129, 0.15));
+      border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #fbbf24;
+      font-weight: 600;
+    }
+
+    header { text-align: center; padding: 24px 0 16px; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    h1 { font-size: 1.85rem; font-weight: 800; margin-bottom: 4px; color: #fff; }
+    .location { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; }
+
+    /* Room Cards */
+    .section-title { font-size: 1.1rem; font-weight: 700; margin: 20px 0 12px; color: #e2e8f0; display: flex; align-items: center; gap: 8px; }
+    .room-card {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .room-card:hover { border-color: var(--primary); }
+    .room-card.selected { border-color: var(--primary); background: rgba(245, 158, 11, 0.05); }
+    
+    .room-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .room-name { font-weight: 700; font-size: 1.05rem; color: #fff; }
+    .room-price { font-weight: 800; color: var(--primary); font-size: 1.05rem; }
+    .room-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* Booking Form */
+    .form-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 20px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    label { display: block; font-size: 0.82rem; font-weight: 600; color: #cbd5e1; margin-bottom: 4px; }
+    input, select {
+      width: 100%;
+      background: #0b0f19;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: var(--primary); }
+
+    /* Summary & Deposit */
+    .summary-box {
+      background: #0b0f19;
+      border: 1px dashed var(--card-border);
+      border-radius: 10px;
+      padding: 14px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    .summary-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .summary-row.total { border-top: 1px solid var(--card-border); padding-top: 8px; margin-top: 8px; font-weight: 700; }
+    .deposit-highlight { color: #34d399; font-weight: 800; font-size: 1.15rem; }
+
+    /* QR Checkout Box */
+    .qr-checkout-box {
+      display: none;
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      margin-top: 20px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .qr-img-wrap {
+      background: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      display: inline-block;
+      margin: 14px 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .qr-img-wrap img { width: 200px; height: 200px; display: block; }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-book { background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; font-weight: 800; }
+    .btn-book:hover { opacity: 0.95; transform: translateY(-1px); }
+    .btn-sim-pay { background: linear-gradient(135deg, #10b981, #059669); color: #fff; margin-top: 14px; }
+    .btn-sim-pay:hover { opacity: 0.95; }
+
+    /* Success state */
+    .success-alert {
+      display: none;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10b981;
+      border-radius: 12px;
+      padding: 16px;
+      color: #34d399;
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.95rem;
+    }
+
+    /* Pitch callout for homestay owners */
+    .owner-pitch {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 35px;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+    .owner-pitch h4 { color: #f8fafc; font-size: 1.05rem; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+  <div class="top-notice">
+    ✨ DEMO HỆ THỐNG ĐẶT PHÒNG & TỰ ĐỘNG NHẬN CỌC VIETQR DÀNH CHO HOMESTAY / KHÁCH SẠN
+  </div>
+
+  <div class="container">
+    <header>
+      <span class="badge">● ĐANG CÒN PHÒNG TRỐNG</span>
+      <h1 id="homestayName">Mây Lang Thang Homestay</h1>
+      <p class="location">📍 Đường Hoàng Hoa Thám, Phường 10, TP. Đà Lạt</p>
+    </header>
+
+    <div class="section-title">🛏️ 1. Chọn Hạng Phòng</div>
+
+    <!-- Room 1 -->
+    <div class="room-card selected" onclick="selectRoom('Phòng Ban Mai (View Đồi)', 750000, this)">
+      <div class="room-header">
+        <span class="room-name">Phòng Ban Mai (View Rừng Thông)</span>
+        <span class="room-price">750.000đ <small style="font-size:0.75rem; color: var(--text-muted);">/đêm</small></span>
+      </div>
+      <p class="room-desc">1 giường đôi cực lớn, ban công ngắm bình minh thung lũng, bồn tắm gỗ thư giãn.</p>
+    </div>
+
+    <!-- Room 2 -->
+    <div class="room-card" onclick="selectRoom('Phòng Hoàng Hôn (Ban Công Kính)', 950000, this)">
+      <div class="room-header">
+        <span class="room-name">Phòng Hoàng Hôn (Ban Công Kính)</span>
+        <span class="room-price">950.000đ <small style="font-size:0.75rem; color: var(--text-muted);">/đêm</small></span>
+      </div>
+      <p class="room-desc">Tầng áp mái cao cấp, view toàn cảnh hoàng hôn Đà Lạt, trà & cà phê miễn phí.</p>
+    </div>
+
+    <!-- Room 3 -->
+    <div class="room-card" onclick="selectRoom('Villa Gia Đình Sương Mù', 1800000, this)">
+      <div class="room-header">
+        <span class="room-name">Villa Gia Đình Sương Mù (4 - 6 người)</span>
+        <span class="room-price">1.800.000đ <small style="font-size:0.75rem; color: var(--text-muted);">/đêm</small></span>
+      </div>
+      <p class="room-desc">2 phòng ngủ riêng biệt, phòng khách & bếp BBQ sân vườn riêng.</p>
+    </div>
+
+    <div class="section-title">📅 2. Thông Tin Đặt Phòng</div>
+
+    <div class="form-box">
+      <div class="form-row">
+        <div>
+          <label>Ngày Check-in</label>
+          <input type="date" id="checkIn" value="2026-09-25" onchange="calculateTotal()">
+        </div>
+        <div>
+          <label>Ngày Check-out</label>
+          <input type="date" id="checkOut" value="2026-09-27" onchange="calculateTotal()">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label>Họ và Tên Khách</label>
+          <input type="text" id="guestName" value="Nguyễn Văn An" placeholder="Nhập họ tên...">
+        </div>
+        <div>
+          <label>Số Điện Thoại / Zalo</label>
+          <input type="text" id="guestPhone" value="0988123456" placeholder="Nhập số điện thoại...">
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <div class="summary-row"><span>Hạng phòng:</span> <strong id="summaryRoom">Phòng Ban Mai (View Đồi)</strong></div>
+        <div class="summary-row"><span>Thời gian:</span> <span id="summaryNights">2 đêm</span></div>
+        <div class="summary-row"><span>Tổng giá phòng:</span> <span id="summaryTotal">1.500.000 VNĐ</span></div>
+        <div class="summary-row total">
+          <span>Tiền cọc giữ phòng (50%):</span>
+          <span class="deposit-highlight" id="summaryDeposit">750.000 VNĐ</span>
+        </div>
+      </div>
+
+      <button class="btn btn-book" onclick="generateDepositQR()">
+        ⚡ BẤM ĐẶT PHÒNG & XUẤT MÃ VIETQR ĐẶT CỌC
+      </button>
+    </div>
+
+    <!-- QR Checkout Section -->
+    <div class="qr-checkout-box" id="qrCheckoutBox">
+      <h3 style="color: var(--accent); font-size: 1.2rem; margin-bottom: 4px;">MÃ VIETQR ĐẶT CỌC GIỮ PHÒNG</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Quét mã bằng App ngân hàng bất kỳ (TPBank, VCB, MB, Techcombank, ACB...). Hệ thống tự xác nhận đơn sau 3 giây!</p>
+
+      <div class="qr-img-wrap" id="qrWrap">
+        <img id="qrImage" src="" alt="Mã VietQR đặt cọc">
+      </div>
+
+      <div style="font-size: 0.88rem; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; max-width: 320px; margin: 0 auto 12px; text-align: left;">
+        <div>Ngân hàng: <strong>TPBank</strong></div>
+        <div>Số tài khoản: <strong>20058999999</strong></div>
+        <div>Chủ tài khoản: <strong>LE NGUYEN HUY HOANG</strong></div>
+        <div>Số tiền cọc: <strong style="color: #34d399;" id="qrDepositAmount">750.000đ</strong></div>
+        <div>Nội dung CK: <strong style="color: #fbbf24;" id="qrTransferNote">COC MAY892</strong></div>
+      </div>
+
+      <button class="btn btn-sim-pay" id="btnSimPay" onclick="simulatePaymentSuccess()">
+        ⚡ BẤM ĐỂ GIẢ LẬP KHÁCH ĐÃ CHUYỂN TIỀN CỌC THÀNH CÔNG
+      </button>
+
+      <div class="success-alert" id="successAlert">
+        <strong>🎉 ĐÃ NHẬN TIỀN CỌC THÀNH CÔNG!</strong><br>
+        Hệ thống ghi nhận giao dịch Napas 24/7. Phòng đã được tự động khóa trên lịch và tin nhắn xác nhận đã gửi tới Zalo số điện thoại của khách!
+      </div>
+    </div>
+
+    <!-- Owner pitch -->
+    <div class="owner-pitch">
+      <h4>Anh/chị muốn sở hữu hệ thống đặt phòng & nhận cọc tự động này?</h4>
+      <p style="color: var(--text-muted); margin: 8px 0 14px;">
+        Không cần qua trung gian Casso/SePay. Tiền cọc về thẳng tài khoản ngân hàng chính chủ của anh/chị ngay lập tức. Bàn giao trọn gói chỉ <strong>800.000đ</strong>.
+      </p>
+      <div style="color: #38bdf8; font-weight: 700;">
+        Hotline / Zalo: 090... | TPBank: 20058999999 (LE NGUYEN HUY HOANG)
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentPricePerNight = 750000;
+    let currentRoomName = 'Phòng Ban Mai (View Đồi)';
+
+    // Read URL query params for dynamic tailoring
+    const params = new URLSearchParams(window.location.search);
+    const homestayParam = params.get('name') || params.get('brand');
+    if (homestayParam) {
+      document.getElementById('homestayName').innerText = homestayParam;
+      document.title = homestayParam + " | Hệ Thống Đặt Phòng & Nhận Cọc Tự Động";
+    }
+
+    function selectRoom(name, price, element) {
+      document.querySelectorAll('.room-card').forEach(el => el.classList.remove('selected'));
+      element.classList.add('selected');
+      currentPricePerNight = price;
+      currentRoomName = name;
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      const checkInVal = new Date(document.getElementById('checkIn').value);
+      const checkOutVal = new Date(document.getElementById('checkOut').value);
+      let diffDays = Math.ceil((checkOutVal - checkInVal) / (1000 * 60 * 60 * 24));
+      if (diffDays <= 0) diffDays = 1;
+
+      const total = currentPricePerNight * diffDays;
+      const deposit = Math.round(total * 0.5);
+
+      document.getElementById('summaryRoom').innerText = currentRoomName;
+      document.getElementById('summaryNights').innerText = diffDays + ' đêm';
+      document.getElementById('summaryTotal').innerText = total.toLocaleString('vi-VN') + ' VNĐ';
+      document.getElementById('summaryDeposit').innerText = deposit.toLocaleString('vi-VN') + ' VNĐ';
+      return { total, deposit, diffDays };
+    }
+
+    function generateDepositQR() {
+      const { deposit } = calculateTotal();
+      const code = 'COC' + Math.floor(1000 + Math.random() * 9000);
+      const guestName = encodeURIComponent(document.getElementById('guestName').value || 'Khach');
+      
+      const qrUrl = `https://api.vietqr.io/image/970423-20058999999-fK65o4k.jpg?accountName=LE%20NGUYEN%20HUY%20HOANG&amount=${deposit}&addInfo=${code}`;
+      
+      document.getElementById('qrImage').src = qrUrl;
+      document.getElementById('qrDepositAmount').innerText = deposit.toLocaleString('vi-VN') + 'đ';
+      document.getElementById('qrTransferNote').innerText = code;
+      
+      const qrBox = document.getElementById('qrCheckoutBox');
+      qrBox.style.display = 'block';
+      qrBox.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function simulatePaymentSuccess() {
+      const btn = document.getElementById('btnSimPay');
+      btn.innerText = "⏳ Đang kiểm tra đối soát Napas 24/7...";
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.style.display = 'none';
+        document.getElementById('successAlert').style.display = 'block';
+        document.getElementById('qrWrap').style.border = "4px solid #10b981";
+      }, 1200);
+    }
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VietQR Pro & FastAPI Gateway - Cổng Thanh Toán Tự Host Độc Lập Cho Doanh Nghiệp</title>
+  <title>VietQR Pro & FastAPI Gateway - Cổng Thanh Toán Tự Host Độc Lập</title>
   <meta name="description" content="Giải pháp cổng thanh toán VietQR Napas 24/7 tự host (Self-Hosted), tự động nhận diện thanh toán và bắn Webhook chốt đơn trong 3s. Không phí duy trì hàng tháng.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,14 +40,59 @@
     .nav-inner { display: flex; justify-content: space-between; align-items: center; }
     .brand { font-weight: 800; font-size: 1.25rem; color: #fff; display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .brand span { color: var(--primary); }
-    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
     .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: #fff; }
     .nav-cta { background: var(--primary); color: #000; padding: 8px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
     .nav-cta:hover { opacity: 0.9; }
 
+    /* Personalized Client Banner */
+    .client-banner {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 25px 0 10px;
+      text-align: center;
+      color: #38bdf8;
+      font-weight: 700;
+      font-size: 1.05rem;
+      animation: pulseGlow 2s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
+      to { box-shadow: 0 0 25px rgba(168, 85, 247, 0.3); }
+    }
+
+    /* Preset selector */
+    .preset-bar {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      background: rgba(30, 41, 59, 0.4);
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+    .preset-label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+    .preset-btn {
+      background: #1e293b;
+      border: 1px solid var(--card-border);
+      color: #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .preset-btn:hover { border-color: var(--primary); color: #fff; }
+    .preset-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
+
     /* Hero */
-    .hero { text-align: center; padding: 60px 0 40px; }
+    .hero { text-align: center; padding: 40px 0 30px; }
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -59,22 +104,22 @@
       color: var(--primary);
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 2.6rem;
       font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 16px;
+      line-height: 1.25;
+      margin-bottom: 14px;
       background: linear-gradient(135deg, #fff 40%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       max-width: 760px;
-      margin: 0 auto 30px;
+      margin: 0 auto 24px;
     }
 
     /* Demo Sandbox */
@@ -84,7 +129,7 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
     .sandbox-header {
       background: #1e293b;
@@ -93,21 +138,23 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .sandbox-title { font-weight: 700; font-size: 0.95rem; color: #f8fafc; display: flex; align-items: center; gap: 8px; }
     .live-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
     
     .sandbox-body {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      min-height: 480px;
+      grid-template-columns: 1fr 1.15fr;
+      min-height: 500px;
     }
-    @media (max-width: 840px) {
+    @media (max-width: 860px) {
       .sandbox-body { grid-template-columns: 1fr; }
     }
 
     .checkout-col {
-      padding: 30px;
+      padding: 30px 24px;
       border-right: 1px solid var(--card-border);
       display: flex;
       flex-direction: column;
@@ -125,11 +172,11 @@
     /* QR Code Display */
     .qr-frame {
       background: #ffffff;
-      padding: 14px;
+      padding: 12px;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.4);
       margin-bottom: 16px;
-      position: relative;
+      transition: border 0.2s;
     }
     .qr-frame img {
       width: 210px;
@@ -137,12 +184,12 @@
       display: block;
     }
     .payment-info {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       margin-bottom: 20px;
       text-align: left;
       width: 100%;
-      max-width: 280px;
+      max-width: 300px;
       background: rgba(255,255,255,0.03);
       padding: 12px 16px;
       border-radius: 8px;
@@ -154,7 +201,7 @@
     /* Action Simulation Buttons */
     .sim-btn {
       width: 100%;
-      max-width: 280px;
+      max-width: 300px;
       padding: 12px 18px;
       border-radius: 8px;
       font-weight: 700;
@@ -191,7 +238,7 @@
       margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-between;
     }
     .terminal-window {
       background: #030712;
@@ -201,7 +248,7 @@
       flex: 1;
       font-size: 0.85rem;
       overflow-y: auto;
-      max-height: 400px;
+      max-height: 420px;
       line-height: 1.7;
     }
     .log-line { margin-bottom: 6px; word-break: break-all; }
@@ -212,14 +259,14 @@
     .log-endpoint { color: #c084fc; }
 
     /* Comparison Table */
-    .section-head { text-align: center; margin-bottom: 40px; }
+    .section-head { text-align: center; margin: 50px 0 30px; }
     .section-head h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
     .section-head p { color: var(--text-muted); font-size: 1rem; }
 
     .comparison-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
@@ -234,7 +281,7 @@
     .highlight-col { background: rgba(56, 189, 248, 0.05); }
 
     /* Code Snippets Section */
-    .code-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    .code-tabs { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
     .tab-btn {
       background: #1e293b;
       border: 1px solid var(--card-border);
@@ -254,7 +301,7 @@
       font-size: 0.88rem;
       color: #cbd5e1;
       overflow-x: auto;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     /* Pricing Section */
@@ -262,7 +309,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
     .price-card {
       background: var(--card-bg);
@@ -337,6 +384,26 @@
 
   <div class="container">
 
+    <!-- Personalized Client Banner -->
+    <div class="client-banner" id="clientBanner" style="display: none;">
+      🔥 BẢN DEMO MÔ PHỎNG TÍCH HỢP DÀNH RIÊNG CHO: <span id="bannerClientName">DOANH NGHIỆP</span>
+      <div style="font-size: 0.88rem; font-weight: 400; margin-top: 4px; color: #cbd5e1;" id="bannerClientDesc">
+        Mô phỏng quy trình tự động nhận diện thanh toán Napas 24/7 và bắn Webhook vào hệ thống của bạn.
+      </div>
+    </div>
+
+    <!-- Preset Selector Bar -->
+    <div class="preset-bar">
+      <span class="preset-label">🏢 CHỌN MÔ HÌNH DEMO:</span>
+      <button class="preset-btn active" id="btn-sphinx" onclick="loadPreset('sphinx')">Sphinx Software</button>
+      <button class="preset-btn" id="btn-mageplaza" onclick="loadPreset('mageplaza')">Mageplaza (E-Commerce)</button>
+      <button class="preset-btn" id="btn-trolypage" onclick="loadPreset('trolypage')">Trolypage (Fanpage Bot)</button>
+      <button class="preset-btn" id="btn-mkt" onclick="loadPreset('mkt')">MKT Software (License Key)</button>
+      <button class="preset-btn" id="btn-zit" onclick="loadPreset('zit')">ZIT Software</button>
+      <a href="menu-ca-phe-kafa/" class="preset-btn" style="text-decoration: none; color: #38bdf8;">☕ Quán Cafe (Menu Bàn) ↗</a>
+      <a href="homestay-booking-demo.html" class="preset-btn" style="text-decoration: none; color: #f59e0b;">🏡 Homestay Đà Lạt (Đặt Cọc) ↗</a>
+    </div>
+
     <!-- Hero -->
     <div class="hero">
       <div class="hero-badge">🚀 GIẢI PHÁP THANH TOÁN TỰ CHỦ 100%</div>
@@ -351,7 +418,7 @@
       <div class="sandbox-header">
         <div class="sandbox-title">
           <span class="live-dot"></span>
-          Trình Giả Lập Cổng Thanh Toán & Webhook Thời Gian Thực (Live Simulator)
+          <span id="sandboxTitleText">Trình Giả Lập Cổng Thanh Toán & Webhook Thời Gian Thực</span>
         </div>
         <span style="font-size: 0.8rem; color: #94a3b8; font-family: monospace;">STATUS: CONNECTED (SSE / HTTP2)</span>
       </div>
@@ -359,20 +426,19 @@
       <div class="sandbox-body">
         <!-- Col 1: Checkout -->
         <div class="checkout-col">
-          <div style="font-size: 0.85rem; color: var(--primary); font-weight: 700; margin-bottom: 6px;">ĐƠN HÀNG #DH-8921</div>
-          <h3 style="margin-bottom: 12px; font-size: 1.1rem;">Bản Quyền Phần Mềm / Dịch Vụ Web</h3>
+          <div style="font-size: 0.85rem; color: var(--primary); font-weight: 700; margin-bottom: 6px;" id="orderIdText">ĐƠN HÀNG #SPX-9821</div>
+          <h3 style="margin-bottom: 12px; font-size: 1.1rem;" id="orderServiceText">Hợp Đồng Dịch Vụ Phần Mềm Sphinx</h3>
           
           <div class="qr-frame" id="qrFrame">
-            <!-- Real VietQR image rendered dynamically via VietQR API -->
-            <img id="qrImage" src="https://api.vietqr.io/image/970423-20058999999-fK65o4k.jpg?accountName=LE%20NGUYEN%20HUY%20HOANG&amount=50000&addInfo=DH8921" alt="VietQR Code TPBank 20058999999">
+            <img id="qrImage" src="" alt="VietQR Code TPBank 20058999999">
           </div>
 
           <div class="payment-info">
             <div><span>Ngân hàng:</span> <strong>TPBank (Tien Phong)</strong></div>
             <div><span>Số tài khoản:</span> <strong>20058999999</strong></div>
             <div><span>Chủ tài khoản:</span> <strong>LE NGUYEN HUY HOANG</strong></div>
-            <div><span>Số tiền:</span> <strong style="color: #38bdf8;">50.000 VNĐ</strong></div>
-            <div><span>Nội dung CK:</span> <strong style="color: #fbbf24;">DH8921</strong></div>
+            <div><span>Số tiền:</span> <strong style="color: #38bdf8;" id="orderAmountText">1.500.000 VNĐ</strong></div>
+            <div><span>Nội dung CK:</span> <strong style="color: #fbbf24;" id="orderNoteText">SPX9821</strong></div>
           </div>
 
           <button class="sim-btn sim-btn-pay" id="btnSimulatePay" onclick="simulateSuccessPayment()">
@@ -387,14 +453,10 @@
         <div class="terminal-col">
           <div class="terminal-title">
             <span>💻 Backend Logs & Webhook Stream</span>
+            <span style="color: #38bdf8; font-size: 0.75rem;" id="webhookTargetText">Target: api.sphinx.vn/webhook</span>
           </div>
           <div class="terminal-window" id="terminalLog">
-            <div class="log-line"><span class="log-time">[11:45:00]</span> <span class="log-info">[INIT]</span> Khởi tạo FastAPI VietQR Gateway v1.0.0</div>
-            <div class="log-line"><span class="log-time">[11:45:00]</span> <span class="log-info">[ROUTE]</span> Đăng ký endpoint: <span class="log-endpoint">POST /api/v1/vietqr/generate</span></div>
-            <div class="log-line"><span class="log-time">[11:45:00]</span> <span class="log-info">[ROUTE]</span> Đăng ký endpoint: <span class="log-endpoint">POST /api/v1/webhook/napas</span></div>
-            <div class="log-line"><span class="log-time">[11:45:01]</span> <span class="log-info">[ORDER]</span> Tạo đơn hàng #DH-8921 | Giá trị: 50.000 VNĐ | Hạn: 15 phút</div>
-            <div class="log-line"><span class="log-time">[11:45:01]</span> <span class="log-info">[VIETQR]</span> Sinh mã EMVCo chuẩn Napas 24/7 (TPBank: 20058999999)</div>
-            <div class="log-line"><span class="log-time">[11:45:02]</span> <span class="log-warn">[LISTENER]</span> Đang mở kết nối SSE lắng nghe biến động tài khoản...</div>
+            <!-- Logs rendered dynamically -->
           </div>
         </div>
       </div>
@@ -464,9 +526,9 @@ payload = {
     "bank_code": "TPB",
     "account_number": "20058999999",
     "account_name": "LE NGUYEN HUY HOANG",
-    "amount": 50000,
-    "order_id": "DH8921",
-    "webhook_url": "https://your-domain.com/api/payment-callback"
+    "amount": 1500000,
+    "order_id": "SPX9821",
+    "webhook_url": "https://api.sphinx.vn/webhook/payment"
 }
 
 res = requests.post("http://localhost:8000/api/v1/vietqr/generate", json=payload)
@@ -521,7 +583,7 @@ print("EMVCo Raw:", qr_data["emvco_payload"])
     </div>
 
     <!-- Contact & Bank Info -->
-    <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 60px;">
+    <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 50px;">
       <h3 style="margin-bottom: 8px;">Thông Tin Thanh Toán & Liên Hệ Trực Tiếp</h3>
       <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
         Ngân Hàng: <strong>TPBank</strong> | STK: <strong style="color: var(--primary); font-size: 1.1rem;">20058999999</strong> | Chủ TK: <strong>LE NGUYEN HUY HOANG</strong><br>
@@ -538,6 +600,131 @@ print("EMVCo Raw:", qr_data["emvco_payload"])
   </footer>
 
   <script>
+    const presets = {
+      sphinx: {
+        clientName: "Sphinx Software",
+        desc: "Mô phỏng quy trình tự động nhận diện thanh toán hợp đồng dịch vụ phần mềm cho Sphinx Software (sphinx.vn).",
+        service: "Hợp Đồng Dịch Vụ Phần Mềm Sphinx",
+        orderId: "SPX-9821",
+        code: "SPX9821",
+        amount: 1500000,
+        webhookUrl: "https://api.sphinx.vn/webhook/payment",
+        targetText: "Target: api.sphinx.vn/webhook/payment"
+      },
+      mageplaza: {
+        clientName: "Mageplaza E-Commerce",
+        desc: "Mô phỏng thanh toán trực tuyến extension Magento & tích hợp webhook đối soát cho Mageplaza (mageplaza.com).",
+        service: "Mageplaza Magento 2 Extension License",
+        orderId: "MPZ-4120",
+        code: "MPZ4120",
+        amount: 1500000,
+        webhookUrl: "https://api.mageplaza.com/v1/order-ipn",
+        targetText: "Target: api.mageplaza.com/v1/order-ipn"
+      },
+      trolypage: {
+        clientName: "Trolypage (Trợ Lý Fanpage)",
+        desc: "Mô phỏng chốt đơn tự động qua Facebook Messenger bot kèm mã VietQR tự động kích hoạt gói VIP cho Trolypage.",
+        service: "Gói Trợ Lý Chatbot Bán Hàng 1 Năm",
+        orderId: "TLP-8832",
+        code: "TLP8832",
+        amount: 1500000,
+        webhookUrl: "https://bot.trolypage.com/api/payment-hook",
+        targetText: "Target: bot.trolypage.com/api/payment-hook"
+      },
+      mkt: {
+        clientName: "MKT Software",
+        desc: "Mô phỏng thanh toán tự động cấp key bản quyền phần mềm MKT (phanmemmkt.vn) không cần duyệt thủ công.",
+        service: "Bản Quyền MKT Software Vĩnh Viễn",
+        orderId: "MKT-5519",
+        code: "MKT5519",
+        amount: 1500000,
+        webhookUrl: "https://phanmemmkt.vn/api/activate-key",
+        targetText: "Target: phanmemmkt.vn/api/activate-key"
+      },
+      zit: {
+        clientName: "ZIT Software",
+        desc: "Mô phỏng hệ thống thanh toán tự động cho các dự án phần mềm và gia công IT của ZIT Software (zitsoftware.com).",
+        service: "Hợp Đồng Triển Khai Phần Mềm ZIT",
+        orderId: "ZIT-3091",
+        code: "ZIT3091",
+        amount: 1500000,
+        webhookUrl: "https://api.zitsoftware.com/webhook",
+        targetText: "Target: api.zitsoftware.com/webhook"
+      }
+    };
+
+    let currentConfig = presets.sphinx;
+
+    function applyConfig(cfg) {
+      currentConfig = cfg;
+      document.getElementById('clientBanner').style.display = 'block';
+      document.getElementById('bannerClientName').innerText = cfg.clientName.toUpperCase();
+      document.getElementById('bannerClientDesc').innerText = cfg.desc;
+      document.getElementById('sandboxTitleText').innerText = `Mô Phỏng Cổng Thanh Toán Cho: ${cfg.clientName}`;
+      document.getElementById('orderIdText').innerText = `ĐƠN HÀNG #${cfg.orderId}`;
+      document.getElementById('orderServiceText').innerText = cfg.service;
+      document.getElementById('orderAmountText').innerText = cfg.amount.toLocaleString('vi-VN') + ' VNĐ';
+      document.getElementById('orderNoteText').innerText = cfg.code;
+      document.getElementById('webhookTargetText').innerText = cfg.targetText;
+
+      // Update QR Code
+      const qrUrl = `https://api.vietqr.io/image/970423-20058999999-fK65o4k.jpg?accountName=LE%20NGUYEN%20HUY%20HOANG&amount=${cfg.amount}&addInfo=${cfg.code}`;
+      document.getElementById('qrImage').src = qrUrl;
+
+      // Reset button
+      const btn = document.getElementById('btnSimulatePay');
+      btn.disabled = false;
+      btn.innerText = "⚡ Bấm Để Giả Lập Khách Quét Mã Chuyển Tiền";
+      btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
+      document.getElementById('qrFrame').style.border = "none";
+
+      // Reset logs
+      initLogs(cfg);
+    }
+
+    function initLogs(cfg) {
+      const term = document.getElementById('terminalLog');
+      term.innerHTML = `
+        <div class="log-line"><span class="log-time">[11:50:00]</span> <span class="log-info">[INIT]</span> Khởi tạo FastAPI VietQR Gateway cho ${cfg.clientName}</div>
+        <div class="log-line"><span class="log-time">[11:50:00]</span> <span class="log-info">[ROUTE]</span> Đăng ký endpoint: <span class="log-endpoint">POST /api/v1/vietqr/generate</span></div>
+        <div class="log-line"><span class="log-time">[11:50:01]</span> <span class="log-info">[ORDER]</span> Khởi tạo đơn #${cfg.orderId} | Giá trị: ${cfg.amount.toLocaleString('vi-VN')}đ | Hạn: 15 phút</div>
+        <div class="log-line"><span class="log-time">[11:50:01]</span> <span class="log-info">[VIETQR]</span> Sinh mã EMVCo Napas 24/7 (STK TPBank: 20058999999 - Cú pháp: ${cfg.code})</div>
+        <div class="log-line"><span class="log-time">[11:50:02]</span> <span class="log-warn">[LISTENER]</span> Đang mở SSE lắng nghe biến động tài khoản thời gian thực...</div>
+      `;
+    }
+
+    function loadPreset(key) {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      const btn = document.getElementById('btn-' + key);
+      if (btn) btn.classList.add('active');
+      if (presets[key]) {
+        applyConfig(presets[key]);
+      }
+    }
+
+    function checkQueryParams() {
+      const p = new URLSearchParams(window.location.search);
+      const client = p.get('client') || p.get('brand') || p.get('name');
+      if (client) {
+        const service = p.get('service') || `Gói Giải Pháp / Dịch Vụ Cho ${client}`;
+        const code = p.get('code') || ('DH' + Math.floor(1000 + Math.random() * 9000));
+        const amount = parseInt(p.get('amount')) || 1500000;
+        const customConfig = {
+          clientName: client,
+          desc: `Hệ thống mô phỏng quy trình tự động nhận diện thanh toán Napas 24/7 và bắn Webhook trực tiếp vào hệ thống của ${client}.`,
+          service: service,
+          orderId: code,
+          code: code,
+          amount: amount,
+          webhookUrl: `https://api.${client.toLowerCase().replace(/[^a-z0-9]/g, '')}.com/webhook`,
+          targetText: `Target: api.${client.toLowerCase().replace(/[^a-z0-9]/g, '')}.com/webhook`
+        };
+        applyConfig(customConfig);
+      } else {
+        applyConfig(presets.sphinx);
+      }
+    }
+
     function appendLog(msg, type = 'info') {
       const now = new Date();
       const timeStr = `[${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}]`;
@@ -555,17 +742,17 @@ print("EMVCo Raw:", qr_data["emvco_payload"])
     function simulateSuccessPayment() {
       const btn = document.getElementById('btnSimulatePay');
       btn.disabled = true;
-      btn.innerText = "⏳ Đang nhận biến động số dư Napas...";
+      btn.innerText = "⏳ Đang nhận biến động số dư Napas 24/7...";
 
-      appendLog("Tài khoản TPBank nhận được +50.000 VNĐ. Nội dung giao dịch: DH8921", "success");
+      appendLog(`Tài khoản TPBank nhận được +${currentConfig.amount.toLocaleString('vi-VN')} VNĐ. Nội dung: ${currentConfig.code}`, "success");
 
       setTimeout(() => {
-        appendLog("Hệ thống nhận diện đúng đơn hàng #DH-8921. Đang bắn Webhook tới hệ thống đích...", "info");
+        appendLog(`Hệ thống nhận diện đúng đơn #${currentConfig.orderId}. Đang bắn Webhook tới ${currentConfig.webhookUrl}...`, "info");
       }, 700);
 
       setTimeout(() => {
-        appendLog("POST https://your-domain.com/api/payment-callback HTTP/1.1 -> 200 OK (Thành công trong 280ms)", "success");
-        appendLog("Cập nhật trạng thái đơn hàng: PAID (ĐÃ THANH TOÁN). Kích hoạt quyền sử dụng cho khách hàng!", "success");
+        appendLog(`POST ${currentConfig.webhookUrl} HTTP/1.1 -> 200 OK (Thành công trong 210ms)`, "success");
+        appendLog(`[ACTION] Tự động cập nhật: PAID (ĐÃ THANH TOÁN). Kích hoạt quyền dịch vụ cho khách hàng của ${currentConfig.clientName}!`, "success");
         
         btn.innerText = "✅ ĐÃ XÁC NHẬN THANH TOÁN THÀNH CÔNG!";
         btn.style.background = "#10b981";
@@ -575,12 +762,7 @@ print("EMVCo Raw:", qr_data["emvco_payload"])
     }
 
     function resetDemo() {
-      const btn = document.getElementById('btnSimulatePay');
-      btn.disabled = false;
-      btn.innerText = "⚡ Bấm Để Giả Lập Khách Quét Mã Chuyển Tiền";
-      btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
-      document.getElementById('qrFrame').style.border = "none";
-      appendLog("Tạo phiên thanh toán mới cho đơn hàng #DH-9042", "info");
+      applyConfig(currentConfig);
     }
 
     const codeSnippets = {
@@ -591,9 +773,9 @@ payload = {
     "bank_code": "TPB",
     "account_number": "20058999999",
     "account_name": "LE NGUYEN HUY HOANG",
-    "amount": 50000,
-    "order_id": "DH8921",
-    "webhook_url": "https://your-domain.com/api/payment-callback"
+    "amount": 1500000,
+    "order_id": "SPX9821",
+    "webhook_url": "https://api.sphinx.vn/webhook/payment"
 }
 
 res = requests.post("http://localhost:8000/api/v1/vietqr/generate", json=payload)
@@ -607,9 +789,9 @@ print("EMVCo Raw:", qr_data["emvco_payload"])
     "bank_code": "TPB",
     "account_number": "20058999999",
     "account_name": "LE NGUYEN HUY HOANG",
-    "amount": 50000,
-    "order_id": "DH8921",
-    "webhook_url": "https://your-domain.com/api/payment-callback"
+    "amount": 1500000,
+    "order_id": "SPX9821",
+    "webhook_url": "https://api.sphinx.vn/webhook/payment"
   }'
 </code></pre>`,
       nodejs: `<pre><code class="language-javascript">const axios = require('axios');
@@ -619,9 +801,9 @@ async function createVietQROrder() {
     bank_code: 'TPB',
     account_number: '20058999999',
     account_name: 'LE NGUYEN HUY HOANG',
-    amount: 50000,
-    order_id: 'DH8921',
-    webhook_url: 'https://your-domain.com/api/payment-callback'
+    amount: 1500000,
+    order_id: 'SPX9821',
+    webhook_url: 'https://api.sphinx.vn/webhook/payment'
   });
   console.log('VietQR Image:', data.qr_image_url);
 }
@@ -635,9 +817,9 @@ $response = $client->post('http://localhost:8000/api/v1/vietqr/generate', [
         'bank_code' => 'TPB',
         'account_number' => '20058999999',
         'account_name' => 'LE NGUYEN HUY HOANG',
-        'amount' => 50000,
-        'order_id' => 'DH8921',
-        'webhook_url' => 'https://your-domain.com/api/payment-callback'
+        'amount' => 1500000,
+        'order_id' => 'SPX9821',
+        'webhook_url' => 'https://api.sphinx.vn/webhook/payment'
     ]
 ]);
 $data = json_decode($response->getBody(), true);
@@ -651,6 +833,9 @@ echo "QR URL: " . $data['qr_image_url'];
       event.target.classList.add('active');
       document.getElementById('codeContent').innerHTML = codeSnippets[lang];
     }
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', checkQueryParams);
   </script>
 </body>
 </html>
