@@ -403,5 +403,7 @@
   },
   "estimated_pipeline_vnd": "6,982,300 VNĐ",
   "total_revenue_rtc": 111.6,
-  "total_revenue_vnd": 8120000
+  "total_revenue_vnd": 8120000,
+  "last_cloud_run": "2026-09-21 07:01:57",
+  "cloud_runner": "GitHub Actions 24/7 Autonomous Agent"
 }
