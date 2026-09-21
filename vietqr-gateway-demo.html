@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VietQR Pro & FastAPI Gateway - Cổng Thanh Toán Tự Host Độc Lập Cho Doanh Nghiệp</title>
+  <meta name="description" content="Giải pháp cổng thanh toán VietQR Napas 24/7 tự host (Self-Hosted), tự động nhận diện thanh toán và bắn Webhook chốt đơn trong 3s. Không phí duy trì hàng tháng.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --accent: #10b981;
+      --purple: #a855f7;
+      --warning: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    
+    /* Nav */
+    nav {
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 0;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-weight: 800; font-size: 1.25rem; color: #fff; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .brand span { color: var(--primary); }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: var(--primary); color: #000; padding: 8px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+    .nav-cta:hover { opacity: 0.9; }
+
+    /* Hero */
+    .hero { text-align: center; padding: 60px 0 40px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 30px;
+    }
+
+    /* Demo Sandbox */
+    .sandbox {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      margin-bottom: 60px;
+    }
+    .sandbox-header {
+      background: #1e293b;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sandbox-title { font-weight: 700; font-size: 0.95rem; color: #f8fafc; display: flex; align-items: center; gap: 8px; }
+    .live-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+    
+    .sandbox-body {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      min-height: 480px;
+    }
+    @media (max-width: 840px) {
+      .sandbox-body { grid-template-columns: 1fr; }
+    }
+
+    .checkout-col {
+      padding: 30px;
+      border-right: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .terminal-col {
+      padding: 24px;
+      background: #0b0f19;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* QR Code Display */
+    .qr-frame {
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .qr-frame img {
+      width: 210px;
+      height: 210px;
+      display: block;
+    }
+    .payment-info {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      text-align: left;
+      width: 100%;
+      max-width: 280px;
+      background: rgba(255,255,255,0.03);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+    .payment-info div { display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .payment-info strong { color: #fff; }
+
+    /* Action Simulation Buttons */
+    .sim-btn {
+      width: 100%;
+      max-width: 280px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .sim-btn-pay {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+    }
+    .sim-btn-pay:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6); }
+    .sim-btn-reset {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--card-border);
+      margin-top: 8px;
+      font-size: 0.85rem;
+    }
+    .sim-btn-reset:hover { color: #fff; border-color: #475569; }
+
+    /* Terminal */
+    .terminal-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .terminal-window {
+      background: #030712;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 16px;
+      flex: 1;
+      font-size: 0.85rem;
+      overflow-y: auto;
+      max-height: 400px;
+      line-height: 1.7;
+    }
+    .log-line { margin-bottom: 6px; word-break: break-all; }
+    .log-time { color: #64748b; }
+    .log-info { color: #38bdf8; }
+    .log-success { color: #34d399; font-weight: 700; }
+    .log-warn { color: #fbbf24; }
+    .log-endpoint { color: #c084fc; }
+
+    /* Comparison Table */
+    .section-head { text-align: center; margin-bottom: 40px; }
+    .section-head h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+    .section-head p { color: var(--text-muted); font-size: 1rem; }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 60px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .comparison-table th { background: #1e293b; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .highlight-col { background: rgba(56, 189, 248, 0.05); }
+
+    /* Code Snippets Section */
+    .code-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    .tab-btn {
+      background: #1e293b;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .tab-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
+    .code-display {
+      background: #030712;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 20px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      overflow-x: auto;
+      margin-bottom: 60px;
+    }
+
+    /* Pricing Section */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .price-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 30px;
+      position: relative;
+    }
+    .price-card.featured {
+      border-color: var(--primary);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+    }
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--primary);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+    .price-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .price-amount { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .price-amount span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+    .price-features { list-style: none; margin-bottom: 24px; }
+    .price-features li { padding: 6px 0; color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+    .price-features li::before { content: "✓"; color: var(--accent); font-weight: 800; }
+    .price-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-glow { background: var(--primary); color: #000; }
+    .btn-outline { background: transparent; color: #fff; border: 1px solid var(--card-border); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span>⚡ VietQR</span> Gateway Pro
+      </a>
+      <div class="nav-links">
+        <a href="#demo">Live Demo</a>
+        <a href="#features">Ưu Điểm</a>
+        <a href="#api">API Docs</a>
+        <a href="#pricing">Bảng Giá</a>
+        <a href="https://github.com/huyhoang2k5/vietqr-pro" target="_blank" class="nav-cta">★ GitHub Repo</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-badge">🚀 GIẢI PHÁP THANH TOÁN TỰ CHỦ 100%</div>
+      <h1>Cổng Thanh Toán VietQR Tự Động & Webhook</h1>
+      <p>
+        Tự host hoàn toàn trên máy chủ của bạn với FastAPI + Docker. Nhận diện biến động số dư Napas 24/7 và bắn Webhook chốt đơn tự động trong <strong>3 giây</strong>. <strong>Không mất phí duy trì hàng tháng</strong>.
+      </p>
+    </div>
+
+    <!-- Live Demo Sandbox -->
+    <div class="sandbox" id="demo">
+      <div class="sandbox-header">
+        <div class="sandbox-title">
+          <span class="live-dot"></span>
+          Trình Giả Lập Cổng Thanh Toán & Webhook Thời Gian Thực (Live Simulator)
+        </div>
+        <span style="font-size: 0.8rem; color: #94a3b8; font-family: monospace;">STATUS: CONNECTED (SSE / HTTP2)</span>
+      </div>
+
+      <div class="sandbox-body">
+        <!-- Col 1: Checkout -->
+        <div class="checkout-col">
+          <div style="font-size: 0.85rem; color: var(--primary); font-weight: 700; margin-bottom: 6px;">ĐƠN HÀNG #DH-8921</div>
+          <h3 style="margin-bottom: 12px; font-size: 1.1rem;">Bản Quyền Phần Mềm / Dịch Vụ Web</h3>
+          
+          <div class="qr-frame" id="qrFrame">
+            <!-- Real VietQR image rendered dynamically via VietQR API -->
+            <img id="qrImage" src="https://api.vietqr.io/image/970423-20058999999-fK65o4k.jpg?accountName=LE%20NGUYEN%20HUY%20HOANG&amount=50000&addInfo=DH8921" alt="VietQR Code TPBank 20058999999">
+          </div>
+
+          <div class="payment-info">
+            <div><span>Ngân hàng:</span> <strong>TPBank (Tien Phong)</strong></div>
+            <div><span>Số tài khoản:</span> <strong>20058999999</strong></div>
+            <div><span>Chủ tài khoản:</span> <strong>LE NGUYEN HUY HOANG</strong></div>
+            <div><span>Số tiền:</span> <strong style="color: #38bdf8;">50.000 VNĐ</strong></div>
+            <div><span>Nội dung CK:</span> <strong style="color: #fbbf24;">DH8921</strong></div>
+          </div>
+
+          <button class="sim-btn sim-btn-pay" id="btnSimulatePay" onclick="simulateSuccessPayment()">
+            ⚡ Bấm Để Giả Lập Khách Quét Mã Chuyển Tiền
+          </button>
+          <button class="sim-btn sim-btn-reset" onclick="resetDemo()">
+            ↺ Tạo Lại Giao Dịch Mới
+          </button>
+        </div>
+
+        <!-- Col 2: Terminal -->
+        <div class="terminal-col">
+          <div class="terminal-title">
+            <span>💻 Backend Logs & Webhook Stream</span>
+          </div>
+          <div class="terminal-window" id="terminalLog">
+            <div class="log-line"><span class="log-time">[11:45:00]</span> <span class="log-info">[INIT]</span> Khởi tạo FastAPI VietQR Gateway v1.0.0</div>
+            <div class="log-line"><span class="log-time">[11:45:00]</span> <span class="log-info">[ROUTE]</span> Đăng ký endpoint: <span class="log-endpoint">POST /api/v1/vietqr/generate</span></div>
+            <div class="log-line"><span class="log-time">[11:45:00]</span> <span class="log-info">[ROUTE]</span> Đăng ký endpoint: <span class="log-endpoint">POST /api/v1/webhook/napas</span></div>
+            <div class="log-line"><span class="log-time">[11:45:01]</span> <span class="log-info">[ORDER]</span> Tạo đơn hàng #DH-8921 | Giá trị: 50.000 VNĐ | Hạn: 15 phút</div>
+            <div class="log-line"><span class="log-time">[11:45:01]</span> <span class="log-info">[VIETQR]</span> Sinh mã EMVCo chuẩn Napas 24/7 (TPBank: 20058999999)</div>
+            <div class="log-line"><span class="log-time">[11:45:02]</span> <span class="log-warn">[LISTENER]</span> Đang mở kết nối SSE lắng nghe biến động tài khoản...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparison -->
+    <div class="section-head" id="features">
+      <h2>Tại Sao Doanh Nghiệp Chọn VietQR Gateway Pro?</h2>
+      <p>So sánh trực tiếp giữa giải pháp tự host độc lập và các cổng thanh toán trung gian.</p>
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Tiêu Chí So Sánh</th>
+          <th class="highlight-col" style="color: var(--primary);">VietQR Gateway Pro (Tự Host)</th>
+          <th>Cổng Trung Gian (Casso, SePay, PayOS)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Chi Phí Duy Trì</strong></td>
+          <td class="highlight-col" style="color: #34d399; font-weight: 700;">0 VNĐ / tháng (Mua 1 lần dùng mãi mãi)</td>
+          <td style="color: #ef4444;">200.000đ - 500.000đ / tháng liên tục</td>
+        </tr>
+        <tr>
+          <td><strong>Quyền Riêng Tư & Bảo Mật</strong></td>
+          <td class="highlight-col">100% dữ liệu nằm trên Server của bạn</td>
+          <td>Dữ liệu giao dịch đi qua server bên thứ 3</td>
+        </tr>
+        <tr>
+          <td><strong>Rủi Ro Mã OTP Ngân Hàng</strong></td>
+          <td class="highlight-col" style="color: #34d399; font-weight: 700;">Tuyệt đối KHÔNG cần SMS OTP ngân hàng</td>
+          <td>Một số bên yêu cầu quyền đọc SMS / Email OTP</td>
+        </tr>
+        <tr>
+          <td><strong>Tốc Độ Bắn Webhook</strong></td>
+          <td class="highlight-col">Trung bình 1 - 3 giây ngay khi tiền về TK</td>
+          <td>Phụ thuộc vào độ tải và queue của bên trung gian</td>
+        </tr>
+        <tr>
+          <td><strong>Khả Năng Tùy Biến</strong></td>
+          <td class="highlight-col">Full mã nguồn Python FastAPI, tùy biến 100%</td>
+          <td>Bị giới hạn bởi API và chính sách của nền tảng</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- API Docs -->
+    <div class="section-head" id="api">
+      <h2>Tích Hợp Dễ Dàng Trong 5 Dòng Code</h2>
+      <p>Hỗ trợ mọi ngôn ngữ: Python, Node.js, PHP/Laravel, Golang hoặc cURL.</p>
+    </div>
+
+    <div class="code-tabs">
+      <button class="tab-btn active" onclick="switchCode('python')">Python (FastAPI / Requests)</button>
+      <button class="tab-btn" onclick="switchCode('curl')">cURL</button>
+      <button class="tab-btn" onclick="switchCode('nodejs')">Node.js (Axios)</button>
+      <button class="tab-btn" onclick="switchCode('php')">PHP / Laravel</button>
+    </div>
+
+    <div class="code-display" id="codeContent">
+<pre><code class="language-python"># Sinh mã VietQR chuyển khoản tự động
+import requests
+
+payload = {
+    "bank_code": "TPB",
+    "account_number": "20058999999",
+    "account_name": "LE NGUYEN HUY HOANG",
+    "amount": 50000,
+    "order_id": "DH8921",
+    "webhook_url": "https://your-domain.com/api/payment-callback"
+}
+
+res = requests.post("http://localhost:8000/api/v1/vietqr/generate", json=payload)
+qr_data = res.json()
+print("QR Image URL:", qr_data["qr_image_url"])
+print("EMVCo Raw:", qr_data["emvco_payload"])
+</code></pre>
+    </div>
+
+    <!-- Pricing -->
+    <div class="section-head" id="pricing">
+      <h2>Bảng Giá Chuyển Giao Dịch Vụ</h2>
+      <p>Tiết kiệm hàng chục triệu đồng chi phí duy trì cổng thanh toán mỗi năm.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Plan 1 -->
+      <div class="price-card">
+        <h3 class="price-name">Gói Mã Nguồn (Source Code Kit)</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px;">Phù hợp cho lập trình viên tự triển khai lên server.</p>
+        <div class="price-amount">350.000 <span>VNĐ / lần</span></div>
+        <ul class="price-features">
+          <li>Full Source Code FastAPI + SQLite/PostgreSQL</li>
+          <li>Script Docker Compose 1-click deploy</li>
+          <li>Tài liệu OpenAPI & Swagger tích hợp sẵn</li>
+          <li>Module sinh mã VietQR chuẩn EMVCo Napas 24/7</li>
+          <li>Webhook dispatcher kèm cơ chế retry tự động</li>
+        </ul>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lnhhoang2k5%40gmail.com&su=%C4%90%E1%BA%B7t%20mua%20G%C3%B3i%20Source%20Code%20VietQR%20Gateway%20350k&body=Ch%C3%A0o%20b%E1%BA%A1n%2C%20m%C3%ACnh%20mu%E1%BB%91n%20mua%20b%E1%BB%99%20Source%20Code%20VietQR%20Gateway%20FastAPI%20%28350.000%C4%91%29.%20Vui%20l%C3%B2ng%20g%E1%BB%ADi%20th%C3%B4ng%20tin%20b%C3%A0n%20giao%20nh%C3%A9%21" target="_blank" class="price-btn btn-outline">
+          Đặt Mua Bộ Mã Nguồn (350.000đ)
+        </a>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="price-card featured">
+        <div class="featured-badge">KHUYÊN DÙNG</div>
+        <h3 class="price-name">Triển Khai Trọn Gói (Turnkey Setup)</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px;">Dành cho doanh nghiệp, chủ shop, agency cần chạy ngay.</p>
+        <div class="price-amount">1.500.000 <span>VNĐ / lần</span></div>
+        <ul class="price-features">
+          <li>Tất cả tính năng của Gói Mã Nguồn</li>
+          <li>Kỹ sư trực tiếp cài đặt lên VPS / Server của bạn</li>
+          <li>Cấu hình tên miền riêng + Chứng chỉ SSL HTTPS</li>
+          <li>Tích hợp Webhook kết nối thẳng vào Web / App của bạn</li>
+          <li>Bàn giao và nghiệm thu trong 24 giờ</li>
+          <li>Bảo hành và hỗ trợ kỹ thuật 3 tháng</li>
+        </ul>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lnhhoang2k5%40gmail.com&su=%C4%90%E1%BA%B7t%20tri%E1%BB%83n%20khai%20Tr%E1%BB%8Dn%20G%C3%B3i%20VietQR%20Gateway%201.500.000%C4%91&body=Ch%C3%A0o%20b%E1%BA%A1n%2C%20m%C3%ACnh%20mu%E1%BB%91n%20tri%E1%BB%83n%20khai%20g%C3%B3i%20Turnkey%20VietQR%20Gateway%20%281.500.000%C4%91%29%20l%C3%AAn%20h%E1%BB%87%20th%E1%BB%91ng%20c%E1%BB%A7a%20m%C3%ACnh.%20Vui%20l%C3%B2ng%20li%C3%AAn%20h%E1%BB%87%20l%E1%BA%A1i%20nh%C3%A9%21" target="_blank" class="price-btn btn-glow">
+          Đăng Ký Triển Khai Trọn Gói (1.500.000đ)
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact & Bank Info -->
+    <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 60px;">
+      <h3 style="margin-bottom: 8px;">Thông Tin Thanh Toán & Liên Hệ Trực Tiếp</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
+        Ngân Hàng: <strong>TPBank</strong> | STK: <strong style="color: var(--primary); font-size: 1.1rem;">20058999999</strong> | Chủ TK: <strong>LE NGUYEN HUY HOANG</strong><br>
+        Email: <a href="mailto:lnhhoang2k5@gmail.com" style="color: var(--primary);">lnhhoang2k5@gmail.com</a> | Telegram: <a href="https://t.me/huyhoang2k5" target="_blank" style="color: var(--primary);">@huyhoang2k5</a>
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 VietQR Pro Gateway. Phát triển bởi <a href="https://github.com/huyhoang2k5" target="_blank">Lê Nguyễn Huy Hoàng</a>. Chuẩn thanh toán EMVCo Napas 24/7.</p>
+    </div>
+  </footer>
+
+  <script>
+    function appendLog(msg, type = 'info') {
+      const now = new Date();
+      const timeStr = `[${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}]`;
+      const term = document.getElementById('terminalLog');
+      const div = document.createElement('div');
+      div.className = 'log-line';
+      let typeClass = 'log-info';
+      if (type === 'success') typeClass = 'log-success';
+      if (type === 'warn') typeClass = 'log-warn';
+      div.innerHTML = `<span class="log-time">${timeStr}</span> <span class="${typeClass}">[${type.toUpperCase()}]</span> ${msg}`;
+      term.appendChild(div);
+      term.scrollTop = term.scrollHeight;
+    }
+
+    function simulateSuccessPayment() {
+      const btn = document.getElementById('btnSimulatePay');
+      btn.disabled = true;
+      btn.innerText = "⏳ Đang nhận biến động số dư Napas...";
+
+      appendLog("Tài khoản TPBank nhận được +50.000 VNĐ. Nội dung giao dịch: DH8921", "success");
+
+      setTimeout(() => {
+        appendLog("Hệ thống nhận diện đúng đơn hàng #DH-8921. Đang bắn Webhook tới hệ thống đích...", "info");
+      }, 700);
+
+      setTimeout(() => {
+        appendLog("POST https://your-domain.com/api/payment-callback HTTP/1.1 -> 200 OK (Thành công trong 280ms)", "success");
+        appendLog("Cập nhật trạng thái đơn hàng: PAID (ĐÃ THANH TOÁN). Kích hoạt quyền sử dụng cho khách hàng!", "success");
+        
+        btn.innerText = "✅ ĐÃ XÁC NHẬN THANH TOÁN THÀNH CÔNG!";
+        btn.style.background = "#10b981";
+
+        document.getElementById('qrFrame').style.border = "4px solid #10b981";
+      }, 1500);
+    }
+
+    function resetDemo() {
+      const btn = document.getElementById('btnSimulatePay');
+      btn.disabled = false;
+      btn.innerText = "⚡ Bấm Để Giả Lập Khách Quét Mã Chuyển Tiền";
+      btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
+      document.getElementById('qrFrame').style.border = "none";
+      appendLog("Tạo phiên thanh toán mới cho đơn hàng #DH-9042", "info");
+    }
+
+    const codeSnippets = {
+      python: `<pre><code class="language-python"># Sinh mã VietQR chuyển khoản tự động
+import requests
+
+payload = {
+    "bank_code": "TPB",
+    "account_number": "20058999999",
+    "account_name": "LE NGUYEN HUY HOANG",
+    "amount": 50000,
+    "order_id": "DH8921",
+    "webhook_url": "https://your-domain.com/api/payment-callback"
+}
+
+res = requests.post("http://localhost:8000/api/v1/vietqr/generate", json=payload)
+qr_data = res.json()
+print("QR Image URL:", qr_data["qr_image_url"])
+print("EMVCo Raw:", qr_data["emvco_payload"])
+</code></pre>`,
+      curl: `<pre><code class="language-bash">curl -X POST http://localhost:8000/api/v1/vietqr/generate \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "bank_code": "TPB",
+    "account_number": "20058999999",
+    "account_name": "LE NGUYEN HUY HOANG",
+    "amount": 50000,
+    "order_id": "DH8921",
+    "webhook_url": "https://your-domain.com/api/payment-callback"
+  }'
+</code></pre>`,
+      nodejs: `<pre><code class="language-javascript">const axios = require('axios');
+
+async function createVietQROrder() {
+  const { data } = await axios.post('http://localhost:8000/api/v1/vietqr/generate', {
+    bank_code: 'TPB',
+    account_number: '20058999999',
+    account_name: 'LE NGUYEN HUY HOANG',
+    amount: 50000,
+    order_id: 'DH8921',
+    webhook_url: 'https://your-domain.com/api/payment-callback'
+  });
+  console.log('VietQR Image:', data.qr_image_url);
+}
+createVietQROrder();
+</code></pre>`,
+      php: `<pre><code class="language-php">&lt;?php
+// Laravel / PHP Guzzle
+$client = new \\GuzzleHttp\\Client();
+$response = $client->post('http://localhost:8000/api/v1/vietqr/generate', [
+    'json' => [
+        'bank_code' => 'TPB',
+        'account_number' => '20058999999',
+        'account_name' => 'LE NGUYEN HUY HOANG',
+        'amount' => 50000,
+        'order_id' => 'DH8921',
+        'webhook_url' => 'https://your-domain.com/api/payment-callback'
+    ]
+]);
+$data = json_decode($response->getBody(), true);
+echo "QR URL: " . $data['qr_image_url'];
+?&gt;
+</code></pre>`
+    };
+
+    function switchCode(lang) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('codeContent').innerHTML = codeSnippets[lang];
+    }
+  </script>
+</body>
+</html>
