@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Client Outreach Center | Săn Khách Hàng Thu Tiền Tức Thì</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background: #090d16; color: #f1f5f9; padding: 30px 20px 80px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 30px; }
+    .badge { display: inline-block; padding: 6px 16px; border-radius: 999px; background: rgba(34, 197, 94, 0.15); color: #4ade80; font-size: 0.82rem; font-weight: 700; margin-bottom: 12px; }
+    h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; background: linear-gradient(135deg, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .sub { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; max-width: 650px; margin: 0 auto; }
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+    .stat-item { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 18px; text-align: center; }
+    .stat-val { font-size: 1.8rem; font-weight: 800; color: #38bdf8; }
+    .stat-lbl { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+    
+    .lead-card { background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 18px; padding: 22px; margin-bottom: 20px; transition: 0.2s; }
+    .lead-card:hover { border-color: rgba(99, 102, 241, 0.4); transform: translateY(-2px); }
+    .lead-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+    .lead-num { background: #6366f1; color: white; font-weight: 800; font-size: 0.85rem; padding: 4px 10px; border-radius: 8px; height: fit-content; }
+    .lead-name { font-size: 1.25rem; font-weight: 700; color: #f8fafc; }
+    .lead-addr { font-size: 0.85rem; color: #94a3b8; margin-top: 3px; }
+    .lead-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tag-phone { background: rgba(34, 197, 94, 0.15); color: #4ade80; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
+    .tag-type { background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; }
+    .tag-price { background: rgba(234, 179, 8, 0.15); color: #facc15; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
+    
+    .lead-pitch label { display: block; font-size: 0.8rem; color: #cbd5e1; margin-bottom: 6px; font-weight: 600; }
+    .lead-pitch textarea { width: 100%; height: 95px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px; color: #e2e8f0; font-size: 0.82rem; line-height: 1.5; resize: none; }
+    
+    .lead-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .btn { padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; text-decoration: none; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: 0.2s; }
+    .btn-zalo { background: #0068ff; color: white; }
+    .btn-zalo:hover { background: #0054d1; }
+    .btn-copy { background: rgba(255, 255, 255, 0.08); color: #f8fafc; border: 1px solid rgba(255, 255, 255, 0.15); }
+    .btn-copy:hover { background: rgba(255, 255, 255, 0.15); }
+    .btn-demo { background: rgba(99, 102, 241, 0.15); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .btn-demo:hover { background: rgba(99, 102, 241, 0.3); }
+    
+    .toast { position: fixed; bottom: 20px; right: 20px; background: #22c55e; color: white; padding: 12px 20px; border-radius: 10px; font-weight: 700; font-size: 0.85rem; display: none; z-index: 999; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="badge">● TRUNG TÂM SĂN KHÁCH HÀNG B2B TRỰC TIẾP</span>
+      <h1>B2B Outreach Command Center</h1>
+      <p class="sub">Danh sách 21 doanh nghiệp thực tế (Quán Cafe, Nhà Hàng, Khách Sạn tại Hà Nội) có Hotline di động/Zalo nhưng CHƯA CÓ Website/Menu QR. Bấm nút để chat Zalo hoặc copy tin nhắn chốt đơn 199.000đ - 299.000đ tiền mặt chuyển thẳng TPBank!</p>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-val">21</div>
+        <div class="stat-lbl">Khách hàng Zalo sẵn sàng</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">199.000đ - 299.000đ</div>
+        <div class="stat-lbl">Giá gói cài đặt / quán</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">TPBank 20058999999</div>
+        <div class="stat-lbl">Tài khoản nhận tiền tức thì</div>
+      </div>
+    </div>
+
+    <div class="leads-container">
+      
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#1</span>
+        <div>
+          <h3 class="lead-name">Cà Phê Kafa</h3>
+          <p class="lead-addr">📍 118 Đường Nguyễn Khánh Toàn Cau Giay</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0972954668</span>
+        <span class="tag-type">💼 cafe</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-1">Chào anh/chị Cà Phê Kafa, em thấy quán Cafe mình tại 118 Đường Nguyễn Khánh Toàn Cau Giay lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0972954668" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0972954668)</a>
+        <button onclick="copyPitch('pitch-1')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/menu-ca-phe-kafa/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#2</span>
+        <div>
+          <h3 class="lead-name">Nhà Hàng Blue Butterfly</h3>
+          <p class="lead-addr">📍 69 Mã Mây Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0944852009</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-2">Chào anh/chị Nhà Hàng Blue Butterfly, em thấy nhà hàng mình tại 69 Mã Mây Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0944852009" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0944852009)</a>
+        <button onclick="copyPitch('pitch-2')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#3</span>
+        <div>
+          <h3 class="lead-name">Khách Sạn Golden Diamond</h3>
+          <p class="lead-addr">📍 10 Đường Trần Nhật Duật Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0981230886</span>
+        <span class="tag-type">💼 hotel</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-3">Chào anh/chị Khách Sạn Golden Diamond, em thấy khách sạn / homestay mình tại 10 Đường Trần Nhật Duật Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0981230886" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0981230886)</a>
+        <button onclick="copyPitch('pitch-3')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#4</span>
+        <div>
+          <h3 class="lead-name">OiShi Ngon</h3>
+          <p class="lead-addr">📍 153 Phố Tây Sơn Đống Đa</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0917409312</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-4">Chào anh/chị OiShi Ngon, em thấy nhà hàng mình tại 153 Phố Tây Sơn Đống Đa lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0917409312" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0917409312)</a>
+        <button onclick="copyPitch('pitch-4')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#5</span>
+        <div>
+          <h3 class="lead-name">Oh bread</h3>
+          <p class="lead-addr">📍 21 Hàng Bè Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0981832183</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-5">Chào anh/chị Oh bread, em thấy nhà hàng mình tại 21 Hàng Bè Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0981832183" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0981832183)</a>
+        <button onclick="copyPitch('pitch-5')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#6</span>
+        <div>
+          <h3 class="lead-name">Little Hanoi</h3>
+          <p class="lead-addr">📍 16 Phố Hàng Bè Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0912173472</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-6">Chào anh/chị Little Hanoi, em thấy nhà hàng mình tại 16 Phố Hàng Bè Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0912173472" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0912173472)</a>
+        <button onclick="copyPitch('pitch-6')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#7</span>
+        <div>
+          <h3 class="lead-name">Paolo & Chi Pizzeria Old Quarter</h3>
+          <p class="lead-addr">📍 48 Hàng Buồm Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0984836886</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-7">Chào anh/chị Paolo & Chi Pizzeria Old Quarter, em thấy nhà hàng mình tại 48 Hàng Buồm Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0984836886" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0984836886)</a>
+        <button onclick="copyPitch('pitch-7')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#8</span>
+        <div>
+          <h3 class="lead-name">Trà Bát Bảo Tuấn Béo</h3>
+          <p class="lead-addr">📍 6 Phố Bích Câu</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0912991980</span>
+        <span class="tag-type">💼 cafe</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-8">Chào anh/chị Trà Bát Bảo Tuấn Béo, em thấy quán Cafe mình tại 6 Phố Bích Câu lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0912991980" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0912991980)</a>
+        <button onclick="copyPitch('pitch-8')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#9</span>
+        <div>
+          <h3 class="lead-name">Chay Aummee</h3>
+          <p class="lead-addr">📍 26 Phố Châu Long Phường Ba Đình</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0918226996</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-9">Chào anh/chị Chay Aummee, em thấy nhà hàng mình tại 26 Phố Châu Long Phường Ba Đình lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0918226996" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0918226996)</a>
+        <button onclick="copyPitch('pitch-9')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#10</span>
+        <div>
+          <h3 class="lead-name">Nhà Hàng Hưng Phát</h3>
+          <p class="lead-addr">📍 7 Đường Điện Biên Phủ Phường Ba Đình</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0906081818</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-10">Chào anh/chị Nhà Hàng Hưng Phát, em thấy nhà hàng mình tại 7 Đường Điện Biên Phủ Phường Ba Đình lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0906081818" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0906081818)</a>
+        <button onclick="copyPitch('pitch-10')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#11</span>
+        <div>
+          <h3 class="lead-name">Cửa Hàng Bún Chả Hương Liên</h3>
+          <p class="lead-addr">📍 38 Hàng Buồm Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0988167831</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-11">Chào anh/chị Cửa Hàng Bún Chả Hương Liên, em thấy nhà hàng mình tại 38 Hàng Buồm Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0988167831" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0988167831)</a>
+        <button onclick="copyPitch('pitch-11')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#12</span>
+        <div>
+          <h3 class="lead-name">Lẩu Dê Nhất Ly</h3>
+          <p class="lead-addr">📍 15a Hàng cót Hàng Cót Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0982896426</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-12">Chào anh/chị Lẩu Dê Nhất Ly, em thấy nhà hàng mình tại 15a Hàng cót Hàng Cót Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0982896426" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0982896426)</a>
+        <button onclick="copyPitch('pitch-12')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#13</span>
+        <div>
+          <h3 class="lead-name">Bún Chả Ta</h3>
+          <p class="lead-addr">📍 21 Phố Nguyễn Hữu Huân Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0966848389</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-13">Chào anh/chị Bún Chả Ta, em thấy nhà hàng mình tại 21 Phố Nguyễn Hữu Huân Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0966848389" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0966848389)</a>
+        <button onclick="copyPitch('pitch-13')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#14</span>
+        <div>
+          <h3 class="lead-name">Nhà Hàng Dim Sum Corner</h3>
+          <p class="lead-addr">📍 182 Phố Hàng Bông</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0963668475</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-14">Chào anh/chị Nhà Hàng Dim Sum Corner, em thấy nhà hàng mình tại 182 Phố Hàng Bông lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0963668475" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0963668475)</a>
+        <button onclick="copyPitch('pitch-14')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#15</span>
+        <div>
+          <h3 class="lead-name">trà đào 42</h3>
+          <p class="lead-addr">📍 42k Phố Lý Thường Kiệt</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0987221267</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-15">Chào anh/chị trà đào 42, em thấy nhà hàng mình tại 42k Phố Lý Thường Kiệt lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0987221267" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0987221267)</a>
+        <button onclick="copyPitch('pitch-15')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#16</span>
+        <div>
+          <h3 class="lead-name">quán góc hà nội</h3>
+          <p class="lead-addr">📍 47 Phố Đinh Tiên Hoàng</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0978900968</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-16">Chào anh/chị quán góc hà nội, em thấy nhà hàng mình tại 47 Phố Đinh Tiên Hoàng lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0978900968" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0978900968)</a>
+        <button onclick="copyPitch('pitch-16')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#17</span>
+        <div>
+          <h3 class="lead-name">Nhà Hàng Kiếu Gia</h3>
+          <p class="lead-addr">📍 46 Chương Đương Độ Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0977150332</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-17">Chào anh/chị Nhà Hàng Kiếu Gia, em thấy nhà hàng mình tại 46 Chương Đương Độ Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0977150332" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0977150332)</a>
+        <button onclick="copyPitch('pitch-17')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#18</span>
+        <div>
+          <h3 class="lead-name">Trà Chanh Phô cô</h3>
+          <p class="lead-addr">📍 25 Đào Duy Từ Phường Hoàn Kiếm</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0904693773</span>
+        <span class="tag-type">💼 cafe</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-18">Chào anh/chị Trà Chanh Phô cô, em thấy quán Cafe mình tại 25 Đào Duy Từ Phường Hoàn Kiếm lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0904693773" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0904693773)</a>
+        <button onclick="copyPitch('pitch-18')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#19</span>
+        <div>
+          <h3 class="lead-name">Phở bò 21</h3>
+          <p class="lead-addr">📍 21 Phố Nguyễn Đình Chiểu</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0908293699</span>
+        <span class="tag-type">💼 restaurant</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-19">Chào anh/chị Phở bò 21, em thấy nhà hàng mình tại 21 Phố Nguyễn Đình Chiểu lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0908293699" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0908293699)</a>
+        <button onclick="copyPitch('pitch-19')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#20</span>
+        <div>
+          <h3 class="lead-name">Nhà Khách Dreamcatcher</h3>
+          <p class="lead-addr">📍 21b Ha Hoi, Hoan Kiem</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0904535405</span>
+        <span class="tag-type">💼 hotel</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-20">Chào anh/chị Nhà Khách Dreamcatcher, em thấy khách sạn / homestay mình tại 21b Ha Hoi, Hoan Kiem lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0904535405" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0904535405)</a>
+        <button onclick="copyPitch('pitch-20')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    <div class="lead-card">
+      <div class="lead-header">
+        <span class="lead-num">#21</span>
+        <div>
+          <h3 class="lead-name">Cà Phê Chum</h3>
+          <p class="lead-addr">📍 81 Phố Yên Ninh Phường Ba Đình</p>
+        </div>
+      </div>
+      <div class="lead-meta">
+        <span class="tag-phone">📞 0975398213</span>
+        <span class="tag-type">💼 cafe</span>
+        <span class="tag-price">💰 Giá gói: 199.000đ</span>
+      </div>
+      <div class="lead-pitch">
+        <label>Tin nhắn Zalo mẫu (Đã tối ưu chuyển đổi cao):</label>
+        <textarea readonly id="pitch-21">Chào anh/chị Cà Phê Chum, em thấy quán Cafe mình tại 81 Phố Yên Ninh Phường Ba Đình lượng khách rất đều nhưng chưa có Menu điện tử QR thanh toán tự động tại bàn. Em có dựng sẵn bản demo Menu QR tích hợp chuyển khoản VietQR tự động (tiền về thẳng tài khoản chủ quán, không mất 20% phí chiết khấu như các ứng dụng đặt món). Anh/chị xem thử demo thực tế tại đây: https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/ . Bên em đang hỗ trợ quán cài đặt hoàn thiện trọn gói chỉ 199.000đ trong 15 phút. Nếu anh/chị quan tâm em gửi chi tiết nhé!</textarea>
+      </div>
+      <div class="lead-actions">
+        <a href="https://zalo.me/0975398213" target="_blank" class="btn btn-zalo">💬 Mở Chat Zalo Ngay (0975398213)</a>
+        <button onclick="copyPitch('pitch-21')" class="btn btn-copy">📋 Copy Tin Nhắn</button>
+        <a href="https://huyhoang2k5.github.io/solopreneur-kit/demo-cafe/" target="_blank" class="btn btn-demo">🔗 Xem Demo Dành Riêng</a>
+      </div>
+    </div>
+    
+    </div>
+  </div>
+
+  <div id="toast" class="toast">✅ Đã sao chép tin nhắn vào Clipboard!</div>
+
+  <script>
+    function copyPitch(id) {
+      const textarea = document.getElementById(id);
+      textarea.select();
+      navigator.clipboard.writeText(textarea.value);
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 2000);
+    }
+  </script>
+</body>
+</html>
