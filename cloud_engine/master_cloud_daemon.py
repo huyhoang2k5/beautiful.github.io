@@ -83,7 +83,7 @@ def check_bounty_payouts(headers, ledger):
         pass
 
     # Check RustChain bounty issues
-    issues = [1524, 1098, 1577, 1579, 14476, 16998, 16863, 478]
+    issues = [1524, 1098, 1577, 1579, 14476, 16998, 16863, 478, 13949, 731]
     for iss in issues:
         try:
             url = f'https://api.github.com/repos/Scottcjn/rustchain-bounties/issues/{iss}/comments?per_page=3&sort=created&direction=desc'
