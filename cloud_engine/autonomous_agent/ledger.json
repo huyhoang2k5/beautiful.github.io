@@ -4,6 +4,46 @@
   "total_scanned_opportunities": 49,
   "executed_actions": [
     {
+      "action_id": "ACT_029",
+      "type": "CONTENT_ROUND_BOTTUBE_VIDEO",
+      "target_repo": "Scottcjn/rustchain-bounties",
+      "issue_number": 16497,
+      "title": "[BOUNTY ROUND] Content Round — Deliverable 4: BoTTube video",
+      "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/16497#issuecomment-5754970638",
+      "video_url": "https://bottube.ai/watch/OrRuht0UY0a",
+      "reward": "15 RTC",
+      "reward_numeric": 15.0,
+      "status": "VIDEO_ROUND_CLAIM_POSTED",
+      "submitted_at": "2026-09-21 10:24:34"
+    },
+    {
+      "action_id": "ACT_028",
+      "type": "DISTRIBUTION_PACKAGE_D_SYNDICATION",
+      "target_repo": "Scottcjn/rustchain-bounties",
+      "issue_number": 16601,
+      "title": "[BOUNTY ROUND] Distribution Packages — Package D Article syndication add-on",
+      "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/16601#issuecomment-5754949618",
+      "syndication_repo": "https://github.com/huyhoang2k5/solopreneur-kit/tree/main/syndication",
+      "reward": "8 RTC",
+      "reward_numeric": 8.0,
+      "status": "SYNDICATION_CLAIM_POSTED",
+      "submitted_at": "2026-09-21 10:21:02"
+    },
+    {
+      "action_id": "ACT_027",
+      "type": "BOTTUBE_EXPLAINER_VIDEO_BOUNTY",
+      "target_repo": "Scottcjn/bottube",
+      "issue_number": 644,
+      "title": "[BOUNTY: 10 RTC] Create a What is Proof of Physical AI? Explainer Video",
+      "submission_url": "https://github.com/Scottcjn/bottube/issues/644#issuecomment-5754952031",
+      "video_id": "OrRuht0UY0a",
+      "video_url": "https://bottube.ai/watch/OrRuht0UY0a",
+      "reward": "10 RTC",
+      "reward_numeric": 10.0,
+      "status": "VIDEO_UPLOADED_AND_CLAIM_POSTED",
+      "submitted_at": "2026-09-21 10:21:26"
+    },
+    {
       "action_id": "ACT_026",
       "type": "WATCH_REPOSITORIES_BOUNTY",
       "target_repo": "Scottcjn/rustchain-bounties",
@@ -61,7 +101,8 @@
       ],
       "reward": "18 RTC",
       "status": "STAR_DRIVE_CLAIM_POSTED",
-      "submitted_at": "2026-09-20 22:25:36"
+      "submitted_at": "2026-09-20 22:25:36",
+      "reward_numeric": 18.0
     },
     {
       "action_id": "ACT_024",
@@ -74,7 +115,8 @@
       "gist_mirror": "https://gist.github.com/huyhoang2k5/072e08ca0a44cccb4302a485a5db7908",
       "reward": "5 RTC",
       "status": "BLOG_POST_CLAIM_POSTED",
-      "submitted_at": "2026-09-20 22:25:36"
+      "submitted_at": "2026-09-20 22:25:36",
+      "reward_numeric": 5.0
     },
     {
       "action_id": "ACT_022",
@@ -84,7 +126,8 @@
       "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/1098#issuecomment-5750669572",
       "reward": "3 RTC",
       "status": "MULTI_PLATFORM_SHARE_CLAIM_POSTED",
-      "submitted_at": "2026-09-20 22:15:30"
+      "submitted_at": "2026-09-20 22:15:30",
+      "reward_numeric": 3.0
     },
     {
       "action_id": "ACT_021",
@@ -96,7 +139,8 @@
       "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/1524#issuecomment-5750633780",
       "reward": "5 RTC",
       "status": "AGENT_ACTIVE_ON_ATLAS_CLAIM_POSTED",
-      "submitted_at": "2026-09-20 22:08:58"
+      "submitted_at": "2026-09-20 22:08:58",
+      "reward_numeric": 5.0
     },
     {
       "action_id": "ACT_020",
@@ -106,7 +150,8 @@
       "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/1109#issuecomment-5750611422",
       "reward": "1 RTC",
       "status": "HONEST_FEEDBACK_CLAIM_POSTED",
-      "submitted_at": "2026-09-20 22:04:58"
+      "submitted_at": "2026-09-20 22:04:58",
+      "reward_numeric": 1.0
     },
     {
       "action_id": "ACT_019",
@@ -116,7 +161,8 @@
       "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/1577#issuecomment-5750582101",
       "reward": "2 RTC",
       "status": "CLAIM_SUBMITTED_WITH_COMMITS_AND_DOCS",
-      "submitted_at": "2026-09-20 21:59:49"
+      "submitted_at": "2026-09-20 21:59:49",
+      "reward_numeric": 2.0
     },
     {
       "action_id": "ACT_018",
@@ -156,7 +202,8 @@
       "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/14476#issuecomment-5750424980",
       "reward": "2 RTC",
       "status": "SUBMISSION_POSTED_AWAITING_SETTLEMENT",
-      "submitted_at": "2026-09-20 21:30:20"
+      "submitted_at": "2026-09-20 21:30:20",
+      "reward_numeric": 2.0
     },
     {
       "action_id": "ACT_014",
@@ -166,7 +213,8 @@
       "claim_url": "https://github.com/Scottcjn/rustchain-bounties/issues/16863#issuecomment-5750302955",
       "reward": "0.1 RTC",
       "status": "CLAIM_POSTED_AWAITING_DISTRIBUTION",
-      "submitted_at": "2026-09-20 21:07:33"
+      "submitted_at": "2026-09-20 21:07:33",
+      "reward_numeric": 0.1
     },
     {
       "action_id": "ACT_013",
@@ -194,7 +242,8 @@
       "issue_number": 1578,
       "reward": "5 RTC",
       "status": "CLAIM_SUBMITTED_AWAITING_VERIFICATION",
-      "submitted_at": "2026-09-20 17:37:43"
+      "submitted_at": "2026-09-20 17:37:43",
+      "reward_numeric": 5.0
     },
     {
       "action_id": "ACT_008",
@@ -214,7 +263,8 @@
       "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/1579#issuecomment-5750565189",
       "reward": "3 RTC",
       "status": "CLAIM_SUBMITTED_WITH_COMMITS_AND_DOCS",
-      "submitted_at": "2026-09-20 21:56:38"
+      "submitted_at": "2026-09-20 21:56:38",
+      "reward_numeric": 3.0
     },
     {
       "action_id": "ACT_001_TO_004",
@@ -251,7 +301,7 @@
   "architecture_pipeline": "INTERNET -> [TASK, LEAD, TREND] -> OPPORTUNITY ENGINE -> VALIDATION -> AI EXECUTION -> MONETIZATION -> REVENUE -> FEEDBACK -> HUNT AGAIN",
   "last_cloud_run": "2026-09-21 03:10:55",
   "cloud_runner": "GitHub Actions 24/7 Autonomous Agent",
-  "total_pending_rtc": 51.1,
+  "total_pending_rtc": 84.1,
   "total_pending_nim": 20.0,
   "total_pending_usdc": 27.0,
   "payout_credentials": {
@@ -270,5 +320,6 @@
     "bank_name": "TPBank",
     "bank_account_number": "20058999999",
     "bank_account_holder": "LE NGUYEN HUY HOANG"
-  }
+  },
+  "estimated_pipeline_vnd": "6,202,300 VNĐ"
 }
