@@ -4,6 +4,40 @@
   "total_scanned_opportunities": 49,
   "executed_actions": [
     {
+      "action_id": "ACT_035",
+      "type": "CONTRIBUTOR_REGISTRATION_PR",
+      "target_repo": "Scottcjn/contributors",
+      "pr_number": 200,
+      "title": "feat: register contributor huyhoang2k5 (closes #199)",
+      "submission_url": "https://github.com/Scottcjn/contributors/pull/200",
+      "status": "PR_SUBMITTED_OPEN",
+      "submitted_at": "2026-09-21 11:11:27"
+    },
+    {
+      "action_id": "ACT_034",
+      "type": "UPVOTE_10_BOTTUBE_VIDEOS",
+      "target_repo": "Scottcjn/rustchain-bounties",
+      "issue_number": 1096,
+      "title": "[EASY BOUNTY: 1 RTC] Upvote 10 BoTTube Videos",
+      "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/1096#issuecomment-5755271535",
+      "reward": "1 RTC",
+      "reward_numeric": 1.0,
+      "status": "UPVOTE_CLAIM_POSTED",
+      "submitted_at": "2026-09-21 11:10:45"
+    },
+    {
+      "action_id": "ACT_033",
+      "type": "FOLLOW_5_BOTTUBE_CREATORS",
+      "target_repo": "Scottcjn/rustchain-bounties",
+      "issue_number": 1097,
+      "title": "[EASY BOUNTY: 1 RTC] Follow 5 BoTTube Creators",
+      "submission_url": "https://github.com/Scottcjn/rustchain-bounties/issues/1097#issuecomment-5755271435",
+      "reward": "1 RTC",
+      "reward_numeric": 1.0,
+      "status": "FOLLOW_CLAIM_POSTED",
+      "submitted_at": "2026-09-21 11:10:45"
+    },
+    {
       "action_id": "ACT_032",
       "type": "CONTRIBUTOR_WELCOME_JOIN_BOUNTY",
       "target_repo": "Scottcjn/contributors",
@@ -337,7 +371,7 @@
   "architecture_pipeline": "INTERNET -> [TASK, LEAD, TREND] -> OPPORTUNITY ENGINE -> VALIDATION -> AI EXECUTION -> MONETIZATION -> REVENUE -> FEEDBACK -> HUNT AGAIN",
   "last_cloud_run": "2026-09-21 04:02:31",
   "cloud_runner": "GitHub Actions 24/7 Autonomous Agent",
-  "total_pending_rtc": 91.1,
+  "total_pending_rtc": 93.1,
   "total_pending_nim": 20.0,
   "total_pending_usdc": 27.0,
   "payout_credentials": {
@@ -357,5 +391,5 @@
     "bank_account_number": "20058999999",
     "bank_account_holder": "LE NGUYEN HUY HOANG"
   },
-  "estimated_pipeline_vnd": "6,657,300 VNĐ"
+  "estimated_pipeline_vnd": "6,787,300 VNĐ"
 }
