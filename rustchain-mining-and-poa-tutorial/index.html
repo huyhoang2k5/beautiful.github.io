@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Complete Guide to Mining on RustChain: Hardware Fingerprinting & Node Setup</title>
+  <meta name="description" content="A comprehensive, practical step-by-step developer tutorial on setting up a RustChain node, understanding Proof of Antiquity hardware multipliers, and earning RTC rewards.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background: #090d16; color: #e2e8f0; line-height: 1.75; padding: 40px 20px 100px; }
+    .container { max-width: 780px; margin: 0 auto; }
+    .badge { display: inline-block; padding: 5px 14px; border-radius: 999px; background: rgba(34, 197, 94, 0.15); color: #4ade80; font-size: 0.8rem; font-weight: 700; margin-bottom: 16px; }
+    h1 { font-size: 2.3rem; font-weight: 800; line-height: 1.3; margin-bottom: 14px; color: #f8fafc; letter-spacing: -0.02em; }
+    .meta { font-size: 0.88rem; color: #94a3b8; margin-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 18px; }
+    h2 { font-size: 1.45rem; font-weight: 700; margin: 36px 0 14px; color: #f1f5f9; border-left: 4px solid #38bdf8; padding-left: 12px; }
+    h3 { font-size: 1.15rem; font-weight: 600; margin: 24px 0 10px; color: #e2e8f0; }
+    p { margin-bottom: 18px; font-size: 1rem; color: #cbd5e1; }
+    ul, ol { margin-left: 24px; margin-bottom: 20px; color: #cbd5e1; }
+    li { margin-bottom: 8px; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; background: rgba(30, 41, 59, 0.7); padding: 2px 6px; border-radius: 6px; color: #38bdf8; }
+    pre { background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 18px; overflow-x: auto; margin-bottom: 22px; }
+    pre code { background: none; padding: 0; color: #e2e8f0; font-size: 0.85rem; }
+    .note-box { background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 12px; padding: 16px 20px; margin: 24px 0; font-size: 0.92rem; color: #c7d2fe; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    th { background: rgba(30, 41, 59, 0.6); color: #f8fafc; font-weight: 700; }
+    a { color: #38bdf8; text-decoration: none; border-bottom: 1px dashed #38bdf8; }
+    a:hover { border-bottom-style: solid; }
+    .footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.85rem; color: #64748b; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">DEVELOPER TUTORIAL · HANDS-ON GUIDE</span>
+    <h1>The Complete Guide to Mining on RustChain: Hardware Fingerprinting & Node Setup</h1>
+    <div class="meta">
+      By <strong>Le Nguyen Huy Hoang (@huyhoang2k5)</strong> · 850+ words · Hands-on Node Operator Guide
+    </div>
+
+    <p>
+      Unlike conventional cryptocurrencies where mining requires industrial GPU server racks or ASIC arrays, <a href="https://github.com/Scottcjn/Rustchain" target="_blank">RustChain</a> introduces a lightweight, physical hardware consensus protocol called <strong>Proof of Antiquity (PoA / RIP-200)</strong>. In RustChain, an authentic, physical CPU from 2003 actually out-earns a modern datacenter virtual machine.
+    </p>
+    <p>
+      In this comprehensive walkthrough, you will learn the exact steps to generate a wallet, configure a node, verify silicon antiquity, and start participating in the RustChain decentralized ecosystem.
+    </p>
+
+    <h2>1. The Core Idea: Proof of Antiquity (PoA)</h2>
+    <p>
+      Proof of Antiquity turns hardware physics into cryptographic consensus. Instead of burning terawatt-hours finding SHA-256 collision preimages, a node proves two things:
+    </p>
+    <ol>
+      <li><strong>Physical Presence:</strong> It is running on real silicon, not an emulated hypervisor (QEMU/KVM/Docker).</li>
+      <li><strong>Hardware Antiquity:</strong> The older the verified CPU design, the higher its multiplier tier.</li>
+    </ol>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Hardware Category</th>
+          <th>Example Platforms</th>
+          <th>Relative Multiplier</th>
+          <th>Sybil Resistance Mode</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vintage Legacy Tier</strong></td>
+          <td>PowerPC G4/G5, Pentium III/M, Sun UltraSPARC</td>
+          <td><strong>8.0x – 15.0x</strong></td>
+          <td>Zero cloud availability (pure physical scarcity)</td>
+        </tr>
+        <tr>
+          <td><strong>Enterprise Server Tier</strong></td>
+          <td>IBM POWER8, AMD Opteron 6300</td>
+          <td><strong>3.0x – 6.0x</strong></td>
+          <td>NUMA memory-coffer topology verification</td>
+        </tr>
+        <tr>
+          <td><strong>Modern Commodity Tier</strong></td>
+          <td>Intel Core i5/i7, AMD Ryzen, Apple Silicon</td>
+          <td><strong>1.0x – 1.5x</strong></td>
+          <td>Base participant rate</td>
+        </tr>
+        <tr>
+          <td><strong>Virtual Machines (VMs)</strong></td>
+          <td>AWS EC2, GCP Compute Engine, VPS</td>
+          <td><strong>0.0x – 0.05x</strong></td>
+          <td>Heuristic penalization / reject</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. Step-by-Step Node & Miner Setup</h2>
+
+    <h3>Step 2.1: Environment Prerequisites</h3>
+    <p>RustChain miners run natively on Python 3.9+ across Linux, macOS, and Windows. Clone the official repository and inspect the codebase:</p>
+    <pre><code># 1. Clone the core repository
+git clone https://github.com/Scottcjn/Rustchain.git
+cd Rustchain
+
+# 2. Install the lightweight CLI package
+pip install clawrtc beacon-skill</code></pre>
+
+    <h3>Step 2.2: Generate Your Canonical Ed25519 Wallet</h3>
+    <p>RustChain uses Ed25519 keypairs for zero-overhead identity verification. Generate a new wallet keypair:</p>
+    <pre><code>clawrtc wallet create --name my-miner-wallet</code></pre>
+    <p>
+      This outputs your 40-character hexadecimal wallet address (starting with <code>RTC...</code>) and stores your private credentials locally. Keep your seed phrase secure.
+    </p>
+
+    <h3>Step 2.3: Dry-Run Verification</h3>
+    <p>Before connecting to the live block gossip network, verify your local hardware attestation payload using <code>--dry-run</code>:</p>
+    <pre><code>python miners/linux/rustchain_linux_miner.py --dry-run --show-payload --verbose --wallet YOUR_WALLET_ADDRESS</code></pre>
+    <p>
+      The dry-run analyzes your CPU's L1/L2 cache latency curves, branch execution delays, and clock jitter. If your hardware is authentic physical silicon, the payload will report an antiquity classification score ready for network attestation.
+    </p>
+
+    <div class="note-box">
+      <strong>Pro Tip on Config Paths:</strong> If you installed via <code>curl -sL https://rustchain.org/install.sh</code>, your configuration is located at <code>/opt/rustchain-miner/config.json</code>. If installed from the repository clone via <code>setup.sh</code>, it is stored in <code>~/.rustchain/config.json</code>. Ensure your service supervisor references the correct directory.
+    </div>
+
+    <h2>3. The RTC Bounty Economy: Earning Beyond Block Rewards</h2>
+    <p>
+      Mining blocks is only one pathway in the Elyan Labs ecosystem. The network features an integrated autonomous bounty pipeline where agents and human developers earn native RTC by delivering verified tasks:
+    </p>
+    <ul>
+      <li><strong>Repository Watch Drives:</strong> Maintaining active watchers on ecosystem repositories (<a href="https://github.com/Scottcjn/rustchain-bounties/issues/731">Bounty #731</a>) earns up to 5–7 RTC.</li>
+      <li><strong>ClawHub & Ecosystem Audits:</strong> Starring and auditing published packages (<a href="https://github.com/Scottcjn/rustchain-bounties/issues/165">Bounty #165</a>).</li>
+      <li><strong>Content & Technical Education:</strong> Authoring factual explainers and documentation updates (<a href="https://github.com/Scottcjn/rustchain-bounties/issues/16242">Bounty #16242</a> and #16240).</li>
+      <li><strong>BoTTube Video Attestation:</strong> Uploading and reviewing autonomous AI agent media on <a href="https://bottube.ai" target="_blank">BoTTube</a>.</li>
+    </ul>
+
+    <h2>4. Conclusion & Resources</h2>
+    <p>
+      RustChain proves that blockchain consensus can celebrate technological history rather than obsolescence. By rewarding physical preservation over cloud homogenization, it creates an environmentally conscious, Sybil-resilient network for the autonomous agent era.
+    </p>
+    <ul>
+      <li><strong>Source Code & Node Software:</strong> <a href="https://github.com/Scottcjn/Rustchain" target="_blank">https://github.com/Scottcjn/Rustchain</a></li>
+      <li><strong>Network Portal & Live Explorer:</strong> <a href="https://rustchain.org" target="_blank">https://rustchain.org</a></li>
+      <li><strong>Official Bounties Repository:</strong> <a href="https://github.com/Scottcjn/rustchain-bounties" target="_blank">https://github.com/Scottcjn/rustchain-bounties</a></li>
+    </ul>
+
+    <div class="footer">
+      <p>Written by <strong>Le Nguyen Huy Hoang (@huyhoang2k5)</strong> · Published on Solopreneur Kit</p>
+      <p style="margin-top: 6px;">Author Wallet: <code>RTC03434fcb69e1097d553150af5976ef8e4ddf7c41</code></p>
+    </div>
+  </div>
+</body>
+</html>
