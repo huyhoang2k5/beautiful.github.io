@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transformers on Retro Game Consoles: Architectural Cycle Analysis</title>
+  <meta name="description" content="Technical analysis and comparative cycle benchmarks of running Transformer LLMs on vintage consoles (NES, SNES, Sega Genesis, N64) vs PowerPC and modern edge devices.">
+  <link rel="canonical" href="https://huyhoang2k5.github.io/solopreneur-kit/retro-console-transformers-benchmarks/">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased">
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="mb-8">
+      <a href="../" class="text-sky-400 hover:text-sky-300 text-sm font-mono">&larr; Back to Solopreneur Kit & Bounties</a>
+      <div class="mt-4 inline-block px-3 py-1 bg-sky-950/80 border border-sky-500/30 rounded-full text-xs text-sky-300 font-mono">
+        Elyan Labs Project #206401 Engagement & Technical Review
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mt-4 text-white">
+        Transformers on Retro Game Consoles: Architectural Cycle Analysis
+      </h1>
+      <p class="text-slate-400 mt-3 text-lg">
+        Examining physical cycle counts on Ricoh 2A03, WDC 65816, Motorola 68000, and PowerPC G4 architectures.
+      </p>
+      <div class="text-xs text-slate-500 font-mono mt-4">
+        Author: <span class="text-slate-300">Le Nguyen Huy Hoang (@huyhoang2k5)</span> | September 2026
+      </div>
+    </div>
+
+    <article class="prose prose-invert max-w-none text-slate-300 space-y-8 leading-relaxed">
+      <section class="bg-slate-900/60 p-6 rounded-xl border border-slate-800">
+        <h2 class="text-2xl font-bold text-white mb-4">1. Grounding: Real Measurements Over Emulated Estimates</h2>
+        <p>
+          In typical LLM benchmarking, modern hardware is evaluated purely on tokens per second. However, in low-power and retro computing research—such as <a href="https://hackaday.io/project/206401-transformers-on-retro-game-consoles" target="_blank" class="text-sky-400 underline">Elyan Labs' Project #206401 on Hackaday.io</a>—the key metric is <strong>exact hardware cycle cost per token</strong>.
+        </p>
+        <p>
+          Running transformer attention matrices on 8-bit and 16-bit architectures reveals critical bottlenecks that modern multi-gigahertz architectures hide behind speculative execution and massive L3 caches:
+        </p>
+        <div class="overflow-x-auto my-6">
+          <table class="w-full text-left border border-slate-800 text-sm">
+            <thead class="bg-slate-800/60 text-slate-200">
+              <tr>
+                <th class="p-3">Platform</th>
+                <th class="p-3">Architecture</th>
+                <th class="p-3">Measured Cost / Rate</th>
+                <th class="p-3">Verification Method</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+              <tr>
+                <td class="p-3 font-semibold text-white">NES / Famicom</td>
+                <td class="p-3">Ricoh 2A03 (6502 core)</td>
+                <td class="p-3 text-amber-300">1,117,248 cycles/token (~0.62 s)</td>
+                <td class="p-3 text-slate-400">MAME 0.277 + Lua tap (exact 6502 cycles)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-white">SNES / Super Famicom</td>
+                <td class="p-3">WDC 65816 (16-bit)</td>
+                <td class="p-3 text-emerald-400">7.030 tok/s (SlowROM) / 8.019 (FastROM)</td>
+                <td class="p-3 text-slate-400">Cycle-exact S-CPU hardware timers</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-white">Sega Genesis</td>
+                <td class="p-3">Motorola 68000 (16/32-bit)</td>
+                <td class="p-3 text-sky-400">Cycle-exact pipeline measurement</td>
+                <td class="p-3 text-slate-400">Stock 7.67 MHz M68k bus trace</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-semibold text-white">Power Mac G4 (2004)</td>
+                <td class="p-3">PowerPC 7447A (AltiVec)</td>
+                <td class="p-3 text-indigo-400">4.8x PoA Multiplier</td>
+                <td class="p-3 text-slate-400">RustChain Attestation Node (`/attest/submit`)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="bg-slate-900/60 p-6 rounded-xl border border-slate-800">
+        <h2 class="text-2xl font-bold text-white mb-4">2. The 1.58-bit Ternary Breakthrough on 16-bit Silicon</h2>
+        <p>
+          One of the most profound revelations from the Project #206401 build logs is that <strong>ternary (-1, 0, +1) representation outperforms int8 by 2.02x on the SNES</strong>, despite the SNES possessing dedicated hardware multiplication registers.
+        </p>
+        <p>
+          <strong>Why this occurs:</strong> On 65816 architectures, accessing hardware multiplication registers involves memory-mapped I/O cycle penalties ($4202/$4203 write, 8 CPU cycle wait, $4216 read). With 1.58-bit ternary quantization, multiplication is completely eliminated: additions and subtractions are executed directly in registers or zero-page accumulators, bypassing the I/O bus entirely.
+        </p>
+      </section>
+
+      <section class="bg-slate-900/60 p-6 rounded-xl border border-slate-800">
+        <h2 class="text-2xl font-bold text-white mb-4">3. Connecting Retro Compute to Decentralized Attestation</h2>
+        <p>
+          In our related work on RustChain's Proof of Antiquity (<a href="../rustchain-mining-and-poa-tutorial/" class="text-sky-400 underline">Mining & PoA Hardware Fingerprinting Tutorial</a>), we demonstrated how physical cycle timing curves prevent cloud hypervisor spoofing. 
+        </p>
+        <p>
+          When an emulated virtual machine attempts to mimic the cycle signature of a 6502 or 68000, micro-jitter on host OS thread dispatchers creates detectable latency anomalies. Cycle-exact measurements from retro consoles are therefore not merely a technical curiosity—they represent the mathematical baseline for hardware-attested cryptographic identity in the emerging autonomous agent economy.
+        </p>
+      </section>
+
+      <div class="mt-8 p-6 bg-slate-900 border border-sky-500/20 rounded-xl text-sm">
+        <h3 class="text-lg font-bold text-white mb-2">Verified Project & Contribution References</h3>
+        <ul class="list-disc pl-5 space-y-1 text-slate-400">
+          <li>Primary Project: <a href="https://hackaday.io/project/206401-transformers-on-retro-game-consoles" target="_blank" class="text-sky-400 hover:underline">Hackaday.io Project #206401</a></li>
+          <li>Ecosystem Chain: <a href="https://github.com/Scottcjn/Rustchain" target="_blank" class="text-sky-400 hover:underline">Scottcjn/Rustchain</a></li>
+          <li>Tutorial & Architecture Series: <a href="https://github.com/huyhoang2k5/solopreneur-kit" target="_blank" class="text-sky-400 hover:underline">huyhoang2k5/solopreneur-kit</a></li>
+          <li>Claimant Wallet: <code class="text-sky-300 font-mono">RTC03434fcb69e1097d553150af5976ef8e4ddf7c41</code></li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
