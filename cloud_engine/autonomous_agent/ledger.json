@@ -539,6 +539,19 @@
       "url": "https://github.com/BasedHardware/omi/pull/19188",
       "issue_url": "https://github.com/BasedHardware/omi/issues/19189",
       "description": "Authored and submitted memories -> SQLite export utility (memories_to_sqlite.py), complete documentation (memories_sqlite.md), and unit test suite (8/8 passing)."
+    },
+    {
+      "action_id": "ACT_045",
+      "type": "CASH_BOUNTY_PR",
+      "target": "BasedHardware/omi#19190",
+      "proposal_issue": "BasedHardware/omi#19191",
+      "amount_usd": 25.0,
+      "amount_vnd": 625000,
+      "payout_method": "Base USDC / PayPal USD",
+      "status": "submitted_pr_open",
+      "url": "https://github.com/BasedHardware/omi/pull/19190",
+      "issue_url": "https://github.com/BasedHardware/omi/issues/19191",
+      "description": "Authored and submitted Indonesian (id) agent quickstart guide (agent_quickstart.id.md) with 100% structural parity, AST validated code, and README index entry."
     }
   ],
   "actual_revenue": {
@@ -581,7 +594,7 @@
   "last_cloud_run": "2026-09-26 13:38:40",
   "cloud_runner": "GitHub Actions 24/7 Autonomous Agent",
   "total_pipeline_vnd": 18820000,
-  "last_updated": "2026-09-26T21:18:43.670655",
+  "last_updated": "2026-09-26T21:20:48.257831",
   "dex_rate_rtc_usd": 0.08,
   "dex_rate_rtc_vnd": 2000,
   "total_pipeline_vnd_dex": 1233000,
@@ -595,6 +608,6 @@
     "PayPal": "lnhhoang2k5@gmail.com",
     "TPBank": "20058999999 (LE NGUYEN HUY HOANG)"
   },
-  "total_real_cash_pipeline_usd": 50.0,
-  "total_real_cash_pipeline_vnd": 1250000
+  "total_real_cash_pipeline_usd": 75.0,
+  "total_real_cash_pipeline_vnd": 1875000
 }
