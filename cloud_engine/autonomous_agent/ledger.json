@@ -517,12 +517,12 @@
   ],
   "actual_revenue": {
     "RTC": 14.790041,
-    "USD": 41.41,
-    "VND": 1065000,
-    "NIM": 0,
-    "status": "DISBURSED_ON_CHAIN_CONFIRMED",
-    "node_endpoint": "http://50.28.86.131:8088/balance/RTC03434fcb69e1097d553150af5976ef8e4ddf7c41",
-    "total_on_chain_txs": 9
+    "USD_dex_market": 1.18,
+    "VND_dex_market": 30000,
+    "USD_theoretical_ledger": 41.41,
+    "VND_theoretical_ledger": 1065000,
+    "market_note": "Live Base Aerodrome DEX price is ~$0.08/RTC ($1.18 USD). Theoretical community valuation was 72.000 VND/RTC.",
+    "status": "DISBURSED_ON_CHAIN_CONFIRMED"
   },
   "potential_bounties_pending": "20 NIM + 51.1 RTC + $27.00 USDC",
   "potential_b2b_deal_value": "2.888.000 VNĐ",
@@ -555,5 +555,8 @@
   "last_cloud_run": "2026-09-26 13:38:40",
   "cloud_runner": "GitHub Actions 24/7 Autonomous Agent",
   "total_pipeline_vnd": 18820000,
-  "last_updated": "2026-09-26T20:37:55.745303"
+  "last_updated": "2026-09-26T20:43:02.774677",
+  "dex_rate_rtc_usd": 0.08,
+  "dex_rate_rtc_vnd": 2000,
+  "total_pipeline_vnd_dex": 1233000
 }
