@@ -513,6 +513,32 @@
       "status": "submitted_verified",
       "url": "https://github.com/Scottcjn/Rustchain/issues/214#issuecomment-5846714386",
       "description": "Comprehensive Windows Miner Smoke Test & 4-issue Bug Audit with full reproduction steps, PoA check proofs, and patches on Windows 11."
+    },
+    {
+      "action_id": "ACT_043",
+      "type": "CASH_BOUNTY_PR",
+      "target": "BasedHardware/omi#19185",
+      "proposal_issue": "BasedHardware/omi#19186",
+      "amount_usd": 25.0,
+      "amount_vnd": 625000,
+      "payout_method": "Base USDC / PayPal USD",
+      "status": "submitted_pr_open",
+      "url": "https://github.com/BasedHardware/omi/pull/19185",
+      "issue_url": "https://github.com/BasedHardware/omi/issues/19186",
+      "description": "Authored and submitted Vietnamese (vi) agent quickstart guide (agent_quickstart.vi.md) with 100% structural parity, clean AST parsing, and README entry."
+    },
+    {
+      "action_id": "ACT_044",
+      "type": "CASH_BOUNTY_PR",
+      "target": "BasedHardware/omi#19188",
+      "proposal_issue": "BasedHardware/omi#19189",
+      "amount_usd": 25.0,
+      "amount_vnd": 625000,
+      "payout_method": "Base USDC / PayPal USD",
+      "status": "submitted_pr_open",
+      "url": "https://github.com/BasedHardware/omi/pull/19188",
+      "issue_url": "https://github.com/BasedHardware/omi/issues/19189",
+      "description": "Authored and submitted memories -> SQLite export utility (memories_to_sqlite.py), complete documentation (memories_sqlite.md), and unit test suite (8/8 passing)."
     }
   ],
   "actual_revenue": {
@@ -555,8 +581,10 @@
   "last_cloud_run": "2026-09-26 13:38:40",
   "cloud_runner": "GitHub Actions 24/7 Autonomous Agent",
   "total_pipeline_vnd": 18820000,
-  "last_updated": "2026-09-26T20:43:02.774677",
+  "last_updated": "2026-09-26T21:11:52.072649",
   "dex_rate_rtc_usd": 0.08,
   "dex_rate_rtc_vnd": 2000,
-  "total_pipeline_vnd_dex": 1233000
+  "total_pipeline_vnd_dex": 1233000,
+  "pending_direct_cash_usd": 50.0,
+  "pending_direct_cash_vnd": 1250000
 }
