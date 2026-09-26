@@ -582,6 +582,45 @@
       "merged_by": "kodjima33",
       "merge_commit_sha": "5e99bb5e663ab379969cc760e3d1fe06f5c0d024",
       "claim_comment_url": "https://github.com/BasedHardware/omi/issues/19195#issuecomment-5847286092"
+    },
+    {
+      "action_id": "ACT_048",
+      "type": "CASH_BOUNTY_PR",
+      "target": "BasedHardware/omi#19201",
+      "proposal_issue": "BasedHardware/omi#19202",
+      "amount_usd": 25.0,
+      "amount_vnd": 625000,
+      "payout_method": "Base USDC / PayPal USD",
+      "status": "submitted_pr_open",
+      "url": "https://github.com/BasedHardware/omi/pull/19201",
+      "issue_url": "https://github.com/BasedHardware/omi/issues/19202",
+      "description": "Authored and submitted Russian (ru) agent quickstart guide (agent_quickstart.ru.md) with 100% structural parity, AST validated code, and README index entry."
+    },
+    {
+      "action_id": "ACT_049",
+      "type": "CASH_BOUNTY_PR",
+      "target": "BasedHardware/omi#19204",
+      "proposal_issue": "BasedHardware/omi#19205",
+      "amount_usd": 25.0,
+      "amount_vnd": 625000,
+      "payout_method": "Base USDC / PayPal USD",
+      "status": "submitted_pr_open",
+      "url": "https://github.com/BasedHardware/omi/pull/19204",
+      "issue_url": "https://github.com/BasedHardware/omi/issues/19205",
+      "description": "Authored and submitted action items -> HTML dashboard export recipe (action_items_to_html.py), documentation (action_items_html.md), and unit tests (6/6 passing)."
+    },
+    {
+      "action_id": "ACT_050",
+      "type": "CASH_BOUNTY_PR",
+      "target": "BasedHardware/omi#19206",
+      "proposal_issue": "BasedHardware/omi#19207",
+      "amount_usd": 25.0,
+      "amount_vnd": 625000,
+      "payout_method": "Base USDC / PayPal USD",
+      "status": "submitted_pr_open",
+      "url": "https://github.com/BasedHardware/omi/pull/19206",
+      "issue_url": "https://github.com/BasedHardware/omi/issues/19207",
+      "description": "Authored and submitted memories -> JSON Lines (JSONL) export recipe (memories_to_jsonl.py), documentation (memories_jsonl.md), and unit tests (5/5 passing)."
     }
   ],
   "actual_revenue": {
@@ -624,12 +663,12 @@
   "last_cloud_run": "2026-09-26 13:38:40",
   "cloud_runner": "GitHub Actions 24/7 Autonomous Agent",
   "total_pipeline_vnd": 18820000,
-  "last_updated": "2026-09-26T22:01:16.484527",
+  "last_updated": "2026-09-26T22:12:24.713731",
   "dex_rate_rtc_usd": 0.08,
   "dex_rate_rtc_vnd": 2000,
   "total_pipeline_vnd_dex": 1233000,
-  "pending_direct_cash_usd": 50.0,
-  "pending_direct_cash_vnd": 1250000,
+  "pending_direct_cash_usd": 175.0,
+  "pending_direct_cash_vnd": 4375000,
   "rtc_status": "ARCHIVED_TERMINATED",
   "rtc_notes": "Token RTC lacks external liquidity and has locked bridge. All tracking permanently discontinued per user directive.",
   "active_focus": "FAST_HIGH_LIQUIDITY_CASH",
@@ -638,8 +677,8 @@
     "PayPal": "lnhhoang2k5@gmail.com",
     "TPBank": "20058999999 (LE NGUYEN HUY HOANG)"
   },
-  "total_real_cash_pipeline_usd": 125.0,
-  "total_real_cash_pipeline_vnd": 3125000,
+  "total_real_cash_pipeline_usd": 200.0,
+  "total_real_cash_pipeline_vnd": 5000000,
   "total_approved_cash_usd": 25.0,
   "total_approved_cash_vnd": 625000
 }
