@@ -552,6 +552,32 @@
       "url": "https://github.com/BasedHardware/omi/pull/19190",
       "issue_url": "https://github.com/BasedHardware/omi/issues/19191",
       "description": "Authored and submitted Indonesian (id) agent quickstart guide (agent_quickstart.id.md) with 100% structural parity, AST validated code, and README index entry."
+    },
+    {
+      "action_id": "ACT_046",
+      "type": "CASH_BOUNTY_PR",
+      "target": "BasedHardware/omi#19192",
+      "proposal_issue": "BasedHardware/omi#19193",
+      "amount_usd": 25.0,
+      "amount_vnd": 625000,
+      "payout_method": "Base USDC / PayPal USD",
+      "status": "submitted_pr_open",
+      "url": "https://github.com/BasedHardware/omi/pull/19192",
+      "issue_url": "https://github.com/BasedHardware/omi/issues/19193",
+      "description": "Authored and submitted Italian (it) agent quickstart guide (agent_quickstart.it.md) with 100% structural parity, AST validated code, and README index entry."
+    },
+    {
+      "action_id": "ACT_047",
+      "type": "CASH_BOUNTY_PR",
+      "target": "BasedHardware/omi#19194",
+      "proposal_issue": "BasedHardware/omi#19195",
+      "amount_usd": 25.0,
+      "amount_vnd": 625000,
+      "payout_method": "Base USDC / PayPal USD",
+      "status": "submitted_pr_open",
+      "url": "https://github.com/BasedHardware/omi/pull/19194",
+      "issue_url": "https://github.com/BasedHardware/omi/issues/19195",
+      "description": "Authored and submitted Thai (th) agent quickstart guide (agent_quickstart.th.md) with 100% structural parity, AST validated code, and README index entry."
     }
   ],
   "actual_revenue": {
@@ -594,7 +620,7 @@
   "last_cloud_run": "2026-09-26 13:38:40",
   "cloud_runner": "GitHub Actions 24/7 Autonomous Agent",
   "total_pipeline_vnd": 18820000,
-  "last_updated": "2026-09-26T21:20:48.257831",
+  "last_updated": "2026-09-26T21:29:58.980546",
   "dex_rate_rtc_usd": 0.08,
   "dex_rate_rtc_vnd": 2000,
   "total_pipeline_vnd_dex": 1233000,
@@ -608,6 +634,6 @@
     "PayPal": "lnhhoang2k5@gmail.com",
     "TPBank": "20058999999 (LE NGUYEN HUY HOANG)"
   },
-  "total_real_cash_pipeline_usd": 75.0,
-  "total_real_cash_pipeline_vnd": 1875000
+  "total_real_cash_pipeline_usd": 125.0,
+  "total_real_cash_pipeline_vnd": 3125000
 }
